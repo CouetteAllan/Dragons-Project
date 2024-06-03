@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class PlayerMovements : MonoBehaviour
+{
+    [SerializeField] private float _playerSpeed;
+    private Rigidbody2D _rb;
+
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void UpdateMovement(Vector2 direction)
+    {
+        _rb.velocity = direction * _playerSpeed;
+    }
+}
