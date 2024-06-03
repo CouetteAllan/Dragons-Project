@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using MoreMountains.Tools;
+using Rayqdr.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -48,7 +48,8 @@ public class PlayerInputs : MonoBehaviour
 
     private void Fire_performed(InputAction.CallbackContext obj)
     {
-        OnFireAction?.Invoke(Dir);
+        Vector2 launchDirection = UtilsClass.GetDirToMouse(this.transform.position);
+        OnFireAction?.Invoke(launchDirection);
     }
 
     private void Move_performed(InputAction.CallbackContext obj)
