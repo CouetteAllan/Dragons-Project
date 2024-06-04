@@ -30,6 +30,8 @@ public class EnemyConfig : ScriptableObject
     [Header("Prefab")]
     public EnemyController EnemyPrefab;
 
+    [Header("Boss Patterns")]
+    public BossPattern[] BossPatterns = new BossPattern[3];
 
     public IEnemyStrategy GetStrategy(EnemyController controller, PlayerController player, Animator anim)
     {
@@ -37,6 +39,8 @@ public class EnemyConfig : ScriptableObject
         {
             case EnemyType.Basic:
                 return new BasicStrategy(controller, player, anim);
+            case EnemyType.Boss:
+                return new BossStrategy(controller, player, anim, BossPatterns);
             default:
                 return new BasicStrategy(controller, player, anim);
         }

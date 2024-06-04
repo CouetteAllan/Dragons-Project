@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
     {
         if (_currentState != EnemyState.WalkInRange)
         {
-            _rb.velocity *= .2f;
+            _rb.velocity *= .9f;
             return;
         }
 
@@ -109,8 +109,12 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
         //Change animator state
         _attackDirection = (_player.transform.position - this.transform.position).normalized;
         _animator.SetFloat("Y Velocity", _rb.velocity.normalized.y);
+        if(_datas.Type == EnemyConfig.EnemyType.Boss)
+        {
+            _animator.runtimeAnimatorController = _strategy.ChoseAttack();
+        }
+        this._rb.velocity = _attackDirection * 15.0f;
         _animator.SetTrigger("Attack");
-        this._rb.velocity = _attackDirection * 30.0f;
     }
 
 
@@ -135,6 +139,18 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
         Gizmos.DrawWireSphere(this.transform.position + (transform.right * (_datas.AttackLenght)),_datas.AttackRadius);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (_datas.Type != EnemyConfig.EnemyType.Boss)
+            return;
+
+        if(collision.gameObject.TryGetComponent(out PlayerController player))
+        {
+            player.ReceiveDamage(this, _datas.BaseDamage);
+        }
+    }
+
     public EnemyConfig GetDatas() => _datas;
     public LayerMask GetPlayerLayer() => _playerLayer;
+    public Rigidbody2D GetRB() => _rb;
 }

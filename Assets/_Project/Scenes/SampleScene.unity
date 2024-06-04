@@ -446,6 +446,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 148399962}
+  - {fileID: 917329671}
   - {fileID: 1370313202}
   - {fileID: 256711531}
   - {fileID: 1674270182}
@@ -1214,7 +1215,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 13
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1767,6 +1768,80 @@ MonoBehaviour:
   BarTarget: 0
   DelayedBarIncreasingProgress: 0
   DelayedBarDecreasingProgress: 0
+--- !u!1001 &917329670
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 261765452}
+    m_Modifications:
+    - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: _enemyDatas
+      value: 
+      objectReference: {fileID: 11400000, guid: e39cf732f1bbc28429661cee350aad24, type: 2}
+    - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: _spawnOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.13364047
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725367453702033917, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8725367453702033917, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: m_Name
+      value: EnemySpawner (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+--- !u!4 &917329671 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+  m_PrefabInstance: {fileID: 917329670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1001401467
 GameObject:
   m_ObjectHideFlags: 0
@@ -3462,7 +3537,7 @@ MonoBehaviour:
   m_Follow: {fileID: 790582551}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 12
+    OrthographicSize: 13
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
