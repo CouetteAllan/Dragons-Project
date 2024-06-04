@@ -20,6 +20,8 @@ public class GameManager : Singleton<GameManager>
 
     public GameState CurrentState { get; private set; }
 
+    public PlayerController Player { get; private set; }
+
     public void Start()
     {
         ChangeGameState(GameState.StartGame);
@@ -44,5 +46,10 @@ public class GameManager : Singleton<GameManager>
         }
 
         OnGameStateChanged?.Invoke(CurrentState);
+    }
+
+    public void SetPlayer(PlayerController player)
+    {
+        Player = player;
     }
 }

@@ -21,15 +21,16 @@ public class EnemyManager : Singleton<EnemyManager>
             Initialize();
         }
     }
-
-    private void Start()
+    private void OnDisable()
     {
-        
+        GameManager.OnGameStateChanged -= OnGameStateChanged;
     }
 
     private void Initialize()
     {
-        
-
+        foreach(var spawn in _spawners)
+        {
+            spawn.SpawnEnemy();
+        }
     }
 }

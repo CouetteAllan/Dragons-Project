@@ -11,19 +11,35 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable
     public static event Action OnPlayerDeath;
 
     [SerializeField] private PlayerData _baseDatas;
+
+    public float MaxHealth => _baseDatas.BaseHealth;
+    public float CurrentHealth => _currentHealth;
+
+
     private PlayerMovements _movements;
     private PlayerInputs _inputs;
     private PlayerAnims _anims;
 
-    public float MaxHealth => _baseDatas.BaseHealth;
     private float _currentHealth;
-    public float CurrentHealth => _currentHealth;
+    private bool _canMove = true;
 
     private void Awake()
     {
         _movements = GetComponent<PlayerMovements>();
         _inputs = GetComponent<PlayerInputs>();
         _anims = GetComponent<PlayerAnims>();
+        GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+    }
+
+    private void GameManager_OnGameStateChanged(GameState newState)
+    {
+        if (newState == GameState.StartGame)
+            GameManager.Instance.SetPlayer(this);
+        if (newState == GameState.Pause)
+            _canMove = false;
+        else
+            _canMove = true;
+
     }
 
     // Start is called before the first frame update
@@ -35,12 +51,16 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable
     // Update is called once per frame
     void Update()
     {
+        if (!_canMove)
+            return;
         if(Mathf.Abs(_inputs.Dir.x) > .1f)
             _anims.SwapGraphScale(_inputs.Dir.x > 0);
     }
 
     private void FixedUpdate()
     {
+        if (!_canMove)
+            return;
         _movements.UpdateMovement(_inputs.Dir.normalized);
     }
 
@@ -58,5 +78,11 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable
     public void ReceiveDamage(IHitSource source, float damage)
     {
         //receive damage
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
+
     }
 }

@@ -136,6 +136,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _feedbackHit: {fileID: 6277557226261355078}
   _deathFeedback: {fileID: 7883337875903558286}
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!70 &1312258007675040259
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
