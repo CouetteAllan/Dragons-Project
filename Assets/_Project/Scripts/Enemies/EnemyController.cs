@@ -18,18 +18,20 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
 
     [SerializeField] private MMF_Player _feedbackHit,_deathFeedback;
     [SerializeField] private LayerMask _playerLayer;
+    [SerializeField] private EnemyConfig _datas;
     public Transform Transform => this.transform;
     public float MaxHealth => _datas.BaseHealth;
     public float CurrentHealth => _currentHealth;
 
     private Rigidbody2D _rb;
     private Animator _animator;
-    [SerializeField] private EnemyConfig _datas;
     private float _currentHealth;
     private EnemyState _currentState = EnemyState.WalkInRange;
 
     private PlayerController _player;
     private Vector2 _attackDirection;
+
+    private IEnemyStrategy _strategy;
 
     public void Initialize(EnemyConfig datas)
     {
@@ -38,6 +40,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
         _rb = GetComponent<Rigidbody2D>();
         _player = GameManager.Instance.Player;
         _animator = GetComponent<Animator>();
+        _strategy = _datas.GetStrategy(this, _player, _animator);
     }
 
     private void FixedUpdate()
@@ -48,7 +51,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
             return;
         }
 
-        WalkInRange();
+        _strategy.DoWalkInRange();
     }
 
     public void ReceiveDamage(IHitSource source, float damage)
@@ -61,7 +64,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
     }
 
     //TODO: Enemy walk in range, then attack => repeat
-    private void ChangeEnemyState(EnemyState state)
+    public void ChangeEnemyState(EnemyState state)
     {
         if (state == _currentState)
             return;
@@ -69,7 +72,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
         switch (state)
         {
             case EnemyState.WalkInRange:
-                WalkInRange();
+                _strategy.DoWalkInRange();
                 break;
             case EnemyState.Attack:
                 StartAttack();
@@ -99,27 +102,6 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
         return _currentHealth <= 0.0f;
     }
 
-    private bool IsInAttackRange()
-    {
-        var cast = Physics2D.OverlapCircle(this.transform.position, _datas.Range, _playerLayer);
-        return cast;
-    }
-
-    private void WalkInRange()
-    {
-        //Check if in range, else we continue to walk toward the player
-        
-
-        var directionTowardPlayer =_player.transform.position - this.transform.position;
-        _rb.velocity = directionTowardPlayer.normalized * _datas.BaseSpeed;
-        _animator.SetFloat("Y Velocity", _rb.velocity.normalized.y);
-        if (IsInAttackRange())
-        {
-            ChangeEnemyState(EnemyState.Attack);
-            return;
-        }
-
-    }
 
     private void StartAttack()
     {
@@ -135,14 +117,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
     public void DoAttack()
     {
         //Actual attack
-        var attack = Physics2D.CircleCast(this.transform.position, _datas.AttackRadius, _attackDirection, _datas.AttackLenght, _playerLayer);
-        if (attack)
-        {
-            if (attack.rigidbody.TryGetComponent(out PlayerController playerHit))
-            {
-                playerHit.ReceiveDamage(this, _datas.BaseDamage);
-            }
-        }
+        _strategy.DoAttack(_attackDirection);
     }
 
     public void EndAttackAnimation()
@@ -159,4 +134,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
         Gizmos.DrawWireSphere(this.transform.position,_datas.AttackRadius);
         Gizmos.DrawWireSphere(this.transform.position + (transform.right * (_datas.AttackLenght)),_datas.AttackRadius);
     }
+
+    public EnemyConfig GetDatas() => _datas;
+    public LayerMask GetPlayerLayer() => _playerLayer;
 }
