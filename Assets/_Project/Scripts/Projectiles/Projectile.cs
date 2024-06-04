@@ -43,8 +43,17 @@ public class Projectile : MonoBehaviour, IHitSource
     {
         if (collision.gameObject.TryGetComponent(out IHittable hittable))
         {
-            hittable.ReceiveDamage(this, _datas.ProjectileDamage);
             var hitPoint = collision.ClosestPoint(this.transform.position);
+            var hit = Physics2D.OverlapCircleAll(hitPoint, 1.5f);
+            if(hit != null)
+            {
+                foreach (var hitTarget in hit)
+                {
+                    if(hitTarget.gameObject.TryGetComponent(out IHittable hittableTarget))
+                        hittableTarget.ReceiveDamage(this, _datas.ProjectileDamage);
+
+                }
+            }
             FXManager.Instance.CreateFX("fireExplosion", hitPoint);
             EndProjectile();
         }
