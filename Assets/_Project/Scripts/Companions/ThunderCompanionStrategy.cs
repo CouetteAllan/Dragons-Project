@@ -38,6 +38,7 @@ public class ThunderCompanionStrategy : CompanionAttackStrategy
 
     private void DelayDealDamageInArea(Vector2 areaPos)
     {
+        FXManager.Instance.CreateFX("thunder", Vector2.zero);
         var enemiesInRange = Physics2D.OverlapCircleAll(areaPos, AreaRange);
         if(enemiesInRange != null)
         {

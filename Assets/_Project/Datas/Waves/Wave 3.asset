@@ -29,4 +29,4 @@ MonoBehaviour:
     EnemyToSpawn: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}
   - DelayWave: 0
     EnemyToSpawn: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}
-  TimeToSpawnInSeconds: 30
+  TimeToSpawnInSeconds: 20
