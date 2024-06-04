@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
 {
     public static event Action<float,float> OnPlayerUpdateHealth;
     public static event Action OnPlayerDeath;
+    public static event Action<int> OnPlayerUpdateKeyNumber;
 
     [SerializeField] private PlayerData _baseDatas;
 
@@ -27,6 +28,9 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
 
     private bool _isInvincible = false;
 
+    public int KeysNumber => _keyNumber;
+    private int _keyNumber = 0;
+
     private void Awake()
     {
         _movements = GetComponent<PlayerMovements>();
@@ -35,9 +39,11 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
         _fireScript = GetComponent<PlayerFireProjectile>();
         GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
         _movements.SetSpeed(_baseDatas.BaseSpeed);
-    }
+        _keyNumber = 0;
 
-    private void GameManager_OnGameStateChanged(GameState newState)
+}
+
+private void GameManager_OnGameStateChanged(GameState newState)
     {
         if (newState == GameState.StartGame)
             GameManager.Instance.SetPlayer(this);
@@ -101,6 +107,12 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     public void UpgradeCD(float duration)
     {
         _fireScript.ChangeCD(duration);
+    }
+
+    public void AddKey()
+    {
+        _keyNumber++;
+        OnPlayerUpdateKeyNumber?.Invoke(_keyNumber);
     }
 
     private void OnDisable()
