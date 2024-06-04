@@ -6,7 +6,11 @@ public class EnemyManager : Singleton<EnemyManager>
 {
     [SerializeField]
     private List<EnemySpawner> _spawners= new List<EnemySpawner>();
+    [SerializeField] private EnemyWaveManager _waveManager;
     private List<EnemyController> _enemies = new List<EnemyController>();
+    private int _currentSpawnerIndex;
+
+
 
     protected override void Awake()
     {
@@ -28,9 +32,12 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private void Initialize()
     {
-        foreach(var spawn in _spawners)
-        {
-            spawn.SpawnEnemy();
-        }
+        _waveManager.Init();
+    }
+
+    public void SpawnEnemy(EnemyConfig enemy)
+    {
+        _spawners[_currentSpawnerIndex].SpawnEnemy(enemy);
+        _currentSpawnerIndex = (_currentSpawnerIndex + 1) % _spawners.Count;
     }
 }

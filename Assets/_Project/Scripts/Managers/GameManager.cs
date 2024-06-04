@@ -38,6 +38,7 @@ public class GameManager : Singleton<GameManager>
             case GameState.MainMenu:
                 break;
             case GameState.StartGame:
+                StartCoroutine(StartGame());
                 break;
             case GameState.InGame:
                 Time.timeScale = 1.0f;
@@ -51,5 +52,11 @@ public class GameManager : Singleton<GameManager>
     public void SetPlayer(PlayerController player)
     {
         Player = player;
+    }
+
+    public IEnumerator StartGame()
+    {
+        yield return new WaitForSeconds(2.0f);
+        ChangeGameState(GameState.InGame);
     }
 }

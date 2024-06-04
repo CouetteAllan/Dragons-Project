@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b13e059c1f02340829d64b8949bf41, type: 3}
   m_Name: BasicEnemyData
   m_EditorClassIdentifier: 
-  BaseHealth: 15
+  BaseHealth: 25
   BaseDamage: 10
   BaseSpeed: 5
   Range: 4

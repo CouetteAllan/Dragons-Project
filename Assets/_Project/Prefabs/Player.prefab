@@ -157,7 +157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: fed12b90c7239a241a4dd41976844cd1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -514,6 +514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireProjectileData: {fileID: 11400000, guid: f7dcda48ce7c201428f51c80286bde63, type: 2}
   _firePoint: {fileID: 4721198516217886720}
+  _fireBallCooldown: 0.4
 --- !u!114 &9070996567540769377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -903,7 +904,7 @@ MonoBehaviour:
           ExcludeFromHoldingPauses: 0
           ContributeToTotalDuration: 1
           InitialDelay: 0
-          CooldownDuration: 0
+          CooldownDuration: 0.5
           InterruptsOnStop: 1
           NumberOfRepeats: 0
           RepeatForever: 0
@@ -1001,7 +1002,7 @@ MonoBehaviour:
           m_DissipationMode: 2
           m_DissipationDistance: 100
           m_PropagationSpeed: 343
-        Velocity: {x: 1, y: 0, z: 0}
+        Velocity: {x: 0.5, y: 0, z: 0}
         ClearImpulseOnStop: 0
     - rid: 840165523780796419
       type: {class: MMF_ColorAdjustments_URP, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Tools}

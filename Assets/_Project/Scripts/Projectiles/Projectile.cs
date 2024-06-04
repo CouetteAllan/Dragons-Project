@@ -14,6 +14,8 @@ public class Projectile : MonoBehaviour, IHitSource
 
     private bool _isDisabled = false;
 
+    private FunctionTimer.FunctionTimerObject _destroyFunction;
+
     public void Initialize(ProjectileData datas, IObjectPool<Projectile> pool)
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -26,7 +28,14 @@ public class Projectile : MonoBehaviour, IHitSource
         _isDisabled = false;
         _rb.velocity = direction * _datas.ProjectileSpeed;
         transform.rotation = Quaternion.FromToRotation(transform.right, direction);
-        FunctionTimer.Create(() => EndProjectile(), _datas.ProjectileDuration);
+        _destroyFunction = FunctionTimer.CreateObject(() => EndProjectile(), _datas.ProjectileDuration);
+    }
+
+    private void Update()
+    {
+        if (_destroyFunction == null)
+            return;
+        _destroyFunction.Update();
     }
 
 
@@ -41,6 +50,7 @@ public class Projectile : MonoBehaviour, IHitSource
 
     private void EndProjectile()
     {
+        _destroyFunction = null;
         if (_isDisabled)
             return;
         transform.rotation = Quaternion.identity;
