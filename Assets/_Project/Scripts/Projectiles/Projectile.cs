@@ -22,6 +22,7 @@ public class Projectile : MonoBehaviour, IHitSource
     public void LaunchProjectile(Vector2 direction)
     {
         _rb.velocity = direction * _datas.ProjectileSpeed;
+        transform.rotation = Quaternion.FromToRotation(transform.right, direction);
         Invoke(nameof(EndProjectile), _datas.ProjectileDuration);
     }
 
@@ -34,6 +35,10 @@ public class Projectile : MonoBehaviour, IHitSource
         }
     }
 
-    private void EndProjectile() => _projectilePool.Release(this);
+    private void EndProjectile()
+    {
+        transform.rotation = Quaternion.identity;
+        _projectilePool.Release(this);
+    }
 
 }

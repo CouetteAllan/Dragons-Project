@@ -10,6 +10,7 @@ public class PlayerFireProjectile : MonoBehaviour
     [SerializeField] private Transform _firePoint;
     private PlayerInputs _inputs;
     private IObjectPool<Projectile> _objectPool;
+    private GameObject _fireProjectileParent;
 
 
     private void Awake()
@@ -43,7 +44,11 @@ public class PlayerFireProjectile : MonoBehaviour
 
     private Projectile OnCreateProjectile()
     {
-        Projectile newProjectile = Instantiate(_fireProjectileData.ProjectilePrefab);
+        if(_fireProjectileParent == null)
+            _fireProjectileParent = new GameObject("Instantiated Fire Balls");
+
+
+        Projectile newProjectile = Instantiate(_fireProjectileData.ProjectilePrefab,_fireProjectileParent.transform);
         newProjectile.Initialize(_fireProjectileData, _objectPool);
         return newProjectile;
     }
