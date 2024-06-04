@@ -2,17 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CompanionData : MonoBehaviour
+[CreateAssetMenu(fileName = "CompanionData",menuName = "Data/Companion/General Datas")]
+public class CompanionData : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public CompanionAttackStrategy CompanionStrategyAttack;
 }

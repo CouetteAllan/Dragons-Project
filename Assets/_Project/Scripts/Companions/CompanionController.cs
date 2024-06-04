@@ -13,13 +13,17 @@ public enum CompanionState
 [RequireComponent(typeof(CompanionAnims))]
 public class CompanionController : MonoBehaviour, ICompanion
 {
+    [SerializeField] private CompanionData _datas;
     CompanionAnims _anims;
     PlayerController _player;
     CompanionState _currentState = CompanionState.Caged;
 
+    private float _currentCooldownAttack = 0.0f;
+
     private void Awake()
     {
         _anims = GetComponent<CompanionAnims>();
+        _currentCooldownAttack = _datas.CompanionStrategyAttack.TimeBetweenShots;
     }
 
     public void Deliver(PlayerController player)
@@ -29,9 +33,15 @@ public class CompanionController : MonoBehaviour, ICompanion
         _currentState = CompanionState.Free;
     }
 
-    public void Shoot()
+    public bool Shoot()
     {
-        //Shoot using the correctStrategy
+        if (_datas.CompanionStrategyAttack.ShootStrategy())
+        {
+            _anims.CompanionPlayAnim();
+            return true;
+        }
+        else
+            return false;
     }
 
     private void Update()
@@ -46,6 +56,12 @@ public class CompanionController : MonoBehaviour, ICompanion
         var directionTowardPlayer = (this.transform.position - _player.transform.position).normalized;
         this.transform.position = Vector2.Lerp(this.transform.position,((Vector2)_player.transform.position + Vector2.up), Time.deltaTime * 2.0f);
         _anims.SwapGraphScale(directionTowardPlayer.x > 0.01f);
+
+        _currentCooldownAttack -= Time.deltaTime;
+        if(_currentCooldownAttack <= 0 && Shoot())
+        {
+            _currentCooldownAttack = _datas.CompanionStrategyAttack.TimeBetweenShots;
+        }
     }
 
 }

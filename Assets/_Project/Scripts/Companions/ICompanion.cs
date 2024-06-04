@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface ICompanion
 {
-    public void Shoot();
+    public bool Shoot();
     public void Deliver(PlayerController player);
 }

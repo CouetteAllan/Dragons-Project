@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(PlayerMovements),typeof(PlayerInputs))]
-public class PlayerController : MonoBehaviour, IHealth, IHittable
+public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
 {
     public static event Action<float> OnPlayerUpdateHealth;
     public static event Action OnPlayerDeath;
@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable
     public float MaxHealth => _baseDatas.BaseHealth;
     public float CurrentHealth => _currentHealth;
 
+    public Transform Transform => this.transform;
 
     private PlayerMovements _movements;
     private PlayerInputs _inputs;
