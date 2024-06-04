@@ -44,6 +44,8 @@ public class Projectile : MonoBehaviour, IHitSource
         if (collision.gameObject.TryGetComponent(out IHittable hittable))
         {
             hittable.ReceiveDamage(this, _datas.ProjectileDamage);
+            var hitPoint = collision.ClosestPoint(this.transform.position);
+            FXManager.Instance.CreateFX("fireExplosion", hitPoint);
             EndProjectile();
         }
     }

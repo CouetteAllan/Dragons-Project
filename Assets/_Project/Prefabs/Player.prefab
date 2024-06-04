@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2dc1d8453910014d8ff55cf43639992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerSpeed: 15
+  _playerSpeed: 12
 --- !u!114 &8910012470980115696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireProjectileData: {fileID: 11400000, guid: f7dcda48ce7c201428f51c80286bde63, type: 2}
   _firePoint: {fileID: 4721198516217886720}
-  _fireBallCooldown: 0.4
+  _fireBallCooldown: 0.25
 --- !u!114 &9070996567540769377
 MonoBehaviour:
   m_ObjectHideFlags: 0
