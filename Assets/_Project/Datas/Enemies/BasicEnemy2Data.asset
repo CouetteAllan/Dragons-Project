@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b13e059c1f02340829d64b8949bf41, type: 3}
   m_Name: BasicEnemy2Data
   m_EditorClassIdentifier: 
-  BaseHealth: 45
-  BaseDamage: 10
-  BaseSpeed: 5
+  BaseHealth: 65
+  BaseDamage: 15
+  BaseSpeed: 5.5
   Range: 4
   AttackRadius: 1.2
   AttackLenght: 3

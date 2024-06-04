@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     private PlayerMovements _movements;
     private PlayerInputs _inputs;
     private PlayerAnims _anims;
+    private PlayerFireProjectile _fireScript;
 
     private float _currentHealth;
     private bool _canMove = true;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
         _movements = GetComponent<PlayerMovements>();
         _inputs = GetComponent<PlayerInputs>();
         _anims = GetComponent<PlayerAnims>();
+        _fireScript = GetComponent<PlayerFireProjectile>();
         GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
         _movements.SetSpeed(_baseDatas.BaseSpeed);
     }
@@ -89,6 +91,16 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
         _isInvincible = true;
         FunctionTimer.Create(() => _isInvincible = false, _baseDatas.InvincibleTime);
 
+    }
+
+    public void PickUpPowerUp(PickUpEffect effect)
+    {
+        effect.DoEffect(this);
+    }
+
+    public void UpgradeCD(float duration)
+    {
+        _fireScript.ChangeCD(duration);
     }
 
     private void OnDisable()

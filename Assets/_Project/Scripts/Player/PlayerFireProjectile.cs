@@ -11,11 +11,14 @@ public class PlayerFireProjectile : MonoBehaviour
     [SerializeField] private ProjectileData _fireProjectileData;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private float _fireBallCooldown = .4f;
+    private float _baseFireBallCooldown;
     private bool _fireBallOnCooldown = false;
     private float _cooldown;
     private PlayerInputs _inputs;
     private IObjectPool<Projectile> _objectPool;
     private GameObject _fireProjectileParent;
+    private float _currentBonusDuration = 0.0f;
+    private Coroutine _currentCoroutine = null;
 
     private void Awake()
     {
@@ -24,6 +27,7 @@ public class PlayerFireProjectile : MonoBehaviour
 
         _objectPool = new ObjectPool<Projectile>(OnCreateProjectile, OnGetProjectile, OnReleaseProjectile, OnDestroyProjectile, true);
         _cooldown = _fireBallCooldown;
+        _baseFireBallCooldown = _fireBallCooldown;
     }
 
     private void OnDisable()
@@ -80,4 +84,26 @@ public class PlayerFireProjectile : MonoBehaviour
         _fireBallOnCooldown = true;
         OnFireBallLaunched?.Invoke();
     }
+
+    public void ChangeCD(float duration)
+    {
+        _currentBonusDuration += duration;
+        _fireBallCooldown = 0.0f;
+        if(_currentCoroutine == null)
+            StartCoroutine(FireBallCDCoroutine());
+    }
+
+    private IEnumerator FireBallCDCoroutine()
+    {
+        while(_currentBonusDuration > 0.0f)
+        {
+            _currentBonusDuration -= Time.deltaTime;
+            yield return null;
+        }
+
+        _fireBallCooldown = _baseFireBallCooldown;
+        _currentCoroutine = null;
+    }
+
+
 }
