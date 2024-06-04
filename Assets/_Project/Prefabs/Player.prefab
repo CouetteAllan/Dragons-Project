@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 549716533779135102}
   - component: {fileID: 2930156745037931526}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8136644920273877880}
   - component: {fileID: 798938070979521098}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DragonHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4721198516217886720}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 110908754908164767}
   - component: {fileID: 7409471803595792814}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dragon Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2235952887753377765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Graph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 3922715704828894796}
   - component: {fileID: 338114240671385622}
   - component: {fileID: 2529118799187255163}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

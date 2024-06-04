@@ -23,14 +23,15 @@ public class Projectile : MonoBehaviour, IHitSource
     {
         _rb.velocity = direction * _datas.ProjectileSpeed;
         transform.rotation = Quaternion.FromToRotation(transform.right, direction);
-        Invoke(nameof(EndProjectile), _datas.ProjectileDuration);
+
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.TryGetComponent(out IHittable hittable))
+        if (collision.gameObject.TryGetComponent(out IHittable hittable))
         {
-            hittable.DealDamage(this, _datas.ProjectileDamage);
+            hittable.ReceiveDamage(this, _datas.ProjectileDamage);
             EndProjectile();
         }
     }

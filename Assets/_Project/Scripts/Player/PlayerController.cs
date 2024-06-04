@@ -55,8 +55,8 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable
 
     private bool IsPlayerDead() => _currentHealth <= 0;
 
-    public void DealDamage(IHitSource source, float damage)
+    public void ReceiveDamage(IHitSource source, float damage)
     {
-        throw new NotImplementedException();
+        //receive damage
     }
 }

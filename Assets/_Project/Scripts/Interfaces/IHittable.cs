@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IHittable
 {
-    public void DealDamage(IHitSource source, float damage);
+    public void ReceiveDamage(IHitSource source, float damage);
 }
 
 public interface IHitSource

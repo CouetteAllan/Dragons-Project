@@ -30,5 +30,6 @@ public class EnemyManager : Singleton<EnemyManager>
     private void Initialize()
     {
         
+
     }
 }
