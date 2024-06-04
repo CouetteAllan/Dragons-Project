@@ -23,11 +23,13 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
     public float CurrentHealth => _currentHealth;
 
     private Rigidbody2D _rb;
-    private EnemyConfig _datas;
+    private Animator _animator;
+    [SerializeField] private EnemyConfig _datas;
     private float _currentHealth;
     private EnemyState _currentState = EnemyState.WalkInRange;
 
     private PlayerController _player;
+    private Vector2 _attackDirection;
 
     public void Initialize(EnemyConfig datas)
     {
@@ -35,13 +37,14 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
         _currentHealth = _datas.BaseHealth;
         _rb = GetComponent<Rigidbody2D>();
         _player = GameManager.Instance.Player;
+        _animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
         if (_currentState != EnemyState.WalkInRange)
         {
-            _rb.velocity *= .5f;
+            _rb.velocity *= .2f;
             return;
         }
 
@@ -63,7 +66,6 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
         if (state == _currentState)
             return;
 
-        _currentState = state;
         switch (state)
         {
             case EnemyState.WalkInRange:
@@ -75,6 +77,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
             case EnemyState.ReceiveDamage:
                 break;
         }
+        _currentState = state;
     }
 
     public void ChangeHealth(float healthChange)
@@ -83,6 +86,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
         //Display health on top of the enemy
         if (IsDead())
         {
+            Destroy(_animator);
             //TODO: Explosion feedback
             OnEnemyDeath?.Invoke(this);
             _deathFeedback.PlayFeedbacks();
@@ -104,31 +108,55 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
     private void WalkInRange()
     {
         //Check if in range, else we continue to walk toward the player
+        
+
+        var directionTowardPlayer =_player.transform.position - this.transform.position;
+        _rb.velocity = directionTowardPlayer.normalized * _datas.BaseSpeed;
+        _animator.SetFloat("Y Velocity", _rb.velocity.normalized.y);
         if (IsInAttackRange())
         {
             ChangeEnemyState(EnemyState.Attack);
             return;
         }
 
-        var directionTowardPlayer =_player.transform.position - this.transform.position;
-        _rb.velocity = directionTowardPlayer.normalized * _datas.BaseSpeed;
-
     }
 
     private void StartAttack()
     {
         Debug.Log("Enemy Start his attack");
-        StartCoroutine(DelayChangeState());
+        //Change animator state
+        _attackDirection = (_player.transform.position - this.transform.position).normalized;
+        _animator.SetFloat("Y Velocity", _rb.velocity.normalized.y);
+        _animator.SetTrigger("Attack");
+        this._rb.velocity = _attackDirection * 30.0f;
     }
 
-    IEnumerator DelayChangeState()
+
+    public void DoAttack()
     {
-        yield return new WaitForSeconds(1.0f);
+        //Actual attack
+        var attack = Physics2D.CircleCast(this.transform.position, _datas.AttackRadius, _attackDirection, _datas.AttackLenght, _playerLayer);
+        if (attack)
+        {
+            if (attack.rigidbody.TryGetComponent(out PlayerController playerHit))
+            {
+                playerHit.ReceiveDamage(this, _datas.BaseDamage);
+            }
+        }
+    }
+
+    public void EndAttackAnimation()
+    {
         ChangeEnemyState(EnemyState.WalkInRange);
     }
 
     private void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(this.transform.position, _datas.Range);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(this.transform.position,_datas.AttackRadius);
+        Gizmos.DrawWireSphere(this.transform.position + (transform.right * (_datas.AttackLenght)),_datas.AttackRadius);
     }
 }

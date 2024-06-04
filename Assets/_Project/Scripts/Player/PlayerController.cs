@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable
     public void ReceiveDamage(IHitSource source, float damage)
     {
         //receive damage
+        _anims.AnimTakeDamage();
     }
 
     private void OnDisable()

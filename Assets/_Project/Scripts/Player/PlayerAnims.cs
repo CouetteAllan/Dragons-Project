@@ -1,4 +1,5 @@
 using DG.Tweening;
+using MoreMountains.Feedbacks;
 using System.Collections;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class PlayerAnims : MonoBehaviour
     [Space]
     [SerializeField] private SpriteRenderer _headRenderer;
     [SerializeField] private Sprite[] _heads = new Sprite[2];
+    [SerializeField] private MMF_Player _hitFeedback;
 
     private float _timerBeforeReswap = 0.0f;
     private Coroutine _currentCoroutine = null;
@@ -21,14 +23,14 @@ public class PlayerAnims : MonoBehaviour
     private void Awake()
     {
         _inputs = GetComponent<PlayerInputs>();
-        _inputs.OnFireAction += OnFireAction;
+        PlayerFireProjectile.OnFireBallLaunched += OnFireAction;
     }
     private void OnDisable()
     {
-        _inputs.OnFireAction -= OnFireAction;
+        PlayerFireProjectile.OnFireBallLaunched -= OnFireAction;
     }
 
-    private void OnFireAction(Vector2 obj)
+    private void OnFireAction()
     {
         SwapHeadSprite();
     }
@@ -85,6 +87,11 @@ public class PlayerAnims : MonoBehaviour
         }
         _headRenderer.sprite = _heads[0];
         _currentCoroutine = null;
+    }
+
+    public void AnimTakeDamage()
+    {
+        _hitFeedback.PlayFeedbacks();
     }
 
 

@@ -6,12 +6,16 @@ using UnityEngine.Pool;
 
 public class PlayerFireProjectile : MonoBehaviour
 {
+    public static event Action OnFireBallLaunched;
+
     [SerializeField] private ProjectileData _fireProjectileData;
     [SerializeField] private Transform _firePoint;
+    [SerializeField] private float _fireBallCooldown = .4f;
+    private bool _fireBallOnCooldown = false;
+    private float _cooldown;
     private PlayerInputs _inputs;
     private IObjectPool<Projectile> _objectPool;
     private GameObject _fireProjectileParent;
-
 
     private void Awake()
     {
@@ -19,11 +23,23 @@ public class PlayerFireProjectile : MonoBehaviour
         _inputs.OnFireAction += OnFireAction;
 
         _objectPool = new ObjectPool<Projectile>(OnCreateProjectile, OnGetProjectile, OnReleaseProjectile, OnDestroyProjectile, true);
+        _cooldown = _fireBallCooldown;
     }
 
     private void OnDisable()
     {
         _inputs.OnFireAction -= OnFireAction;
+    }
+    private void Update()
+    {
+        if (!_fireBallOnCooldown)
+            return;
+        _cooldown -= Time.deltaTime;
+        if(_cooldown <= 0.0f)
+        {
+            _fireBallOnCooldown = false;
+            _cooldown = _fireBallCooldown;
+        }
     }
 
     private void OnDestroyProjectile(Projectile pooledObject)
@@ -55,9 +71,13 @@ public class PlayerFireProjectile : MonoBehaviour
 
     private void OnFireAction(Vector2 direction)
     {
+        if (_fireBallOnCooldown)
+            return;
         //Fire an actual fire ball in the direction
         Projectile projectile = _objectPool.Get();
         projectile.transform.position = _firePoint.position;
         projectile.LaunchProjectile(direction);
+        _fireBallOnCooldown = true;
+        OnFireBallLaunched?.Invoke();
     }
 }

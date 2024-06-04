@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseHealth: 15
   BaseDamage: 10
-  Range: 5
+  BaseSpeed: 5
+  Range: 4
+  AttackRadius: 1.2
+  AttackLenght: 3
   EnemyPrefab: {fileID: 5484748035976209341, guid: a37809b0c6c82704ba73ffad0962ec1e, type: 3}

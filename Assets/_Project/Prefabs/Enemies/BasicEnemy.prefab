@@ -139,6 +139,7 @@ MonoBehaviour:
   _playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  _datas: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}
 --- !u!70 &1312258007675040259
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -171,8 +172,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.05881225, y: 0.8927656}
-  m_Size: {x: 2.629287, y: 1.864741}
+  m_Offset: {x: 0.058812283, y: 0}
+  m_Size: {x: 2.6292872, y: 2.3449337}
   m_Direction: 1
 --- !u!50 &3492421549903290525
 Rigidbody2D:
@@ -211,7 +212,7 @@ Animator:
   m_GameObject: {fileID: 4641428009031320099}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 983144f7d41a2e64ba50b5b8f35ee54f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1420,7 +1421,7 @@ Transform:
   m_GameObject: {fileID: 9074387551539820338}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

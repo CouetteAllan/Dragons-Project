@@ -12,6 +12,8 @@ public class Projectile : MonoBehaviour, IHitSource
 
     public Transform Transform => this.transform;
 
+    private bool _isDisabled = false;
+
     public void Initialize(ProjectileData datas, IObjectPool<Projectile> pool)
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -21,9 +23,10 @@ public class Projectile : MonoBehaviour, IHitSource
 
     public void LaunchProjectile(Vector2 direction)
     {
+        _isDisabled = false;
         _rb.velocity = direction * _datas.ProjectileSpeed;
         transform.rotation = Quaternion.FromToRotation(transform.right, direction);
-
+        FunctionTimer.Create(() => EndProjectile(), _datas.ProjectileDuration);
     }
 
 
@@ -38,8 +41,12 @@ public class Projectile : MonoBehaviour, IHitSource
 
     private void EndProjectile()
     {
+        if (_isDisabled)
+            return;
         transform.rotation = Quaternion.identity;
         _projectilePool.Release(this);
+        _isDisabled = true;
+
     }
 
 }

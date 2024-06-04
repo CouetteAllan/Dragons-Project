@@ -11,6 +11,8 @@ public class EnemyConfig : ScriptableObject
     public float BaseSpeed = 8.0f;
     //Strategy Enemy
     public float Range = 5.0f;
+    public float AttackRadius = 2.0f;
+    public float AttackLenght = 2.0f;
 
     [Header("Prefab")]
     public EnemyController EnemyPrefab;
