@@ -17,4 +17,6 @@ public class PlayerMovements : MonoBehaviour
     {
         _rb.velocity = direction * _playerSpeed;
     }
+
+    public void SetSpeed(float speed) => _playerSpeed = speed;
 }

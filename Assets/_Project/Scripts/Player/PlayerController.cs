@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovements),typeof(PlayerInputs))]
 public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
 {
-    public static event Action<float> OnPlayerUpdateHealth;
+    public static event Action<float,float> OnPlayerUpdateHealth;
     public static event Action OnPlayerDeath;
 
     [SerializeField] private PlayerData _baseDatas;
@@ -24,12 +24,15 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     private float _currentHealth;
     private bool _canMove = true;
 
+    private bool _isInvincible = false;
+
     private void Awake()
     {
         _movements = GetComponent<PlayerMovements>();
         _inputs = GetComponent<PlayerInputs>();
         _anims = GetComponent<PlayerAnims>();
         GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+        _movements.SetSpeed(_baseDatas.BaseSpeed);
     }
 
     private void GameManager_OnGameStateChanged(GameState newState)
@@ -69,7 +72,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     {
         _currentHealth = Mathf.Clamp(_currentHealth + healthChange, 0, MaxHealth);
         //Update UI
-        OnPlayerUpdateHealth?.Invoke(_currentHealth);
+        OnPlayerUpdateHealth?.Invoke(_currentHealth,MaxHealth);
         if (IsPlayerDead())
             OnPlayerDeath?.Invoke();
     }
@@ -78,8 +81,14 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
 
     public void ReceiveDamage(IHitSource source, float damage)
     {
+        if (_isInvincible)
+            return;
         //receive damage
         _anims.AnimTakeDamage();
+        ChangeHealth(-damage);
+        _isInvincible = true;
+        FunctionTimer.Create(() => _isInvincible = false, _baseDatas.InvincibleTime);
+
     }
 
     private void OnDisable()
