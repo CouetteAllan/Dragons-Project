@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16649ded4a93c54409dd4b34dd898786, type: 3}
   m_Name: FireProjectileData
   m_EditorClassIdentifier: 
-  ProjectileSpeed: 15
+  ProjectileSpeed: 25
   ProjectileDamage: 20
   ProjectilePrefab: {fileID: 5254817676926127186, guid: 2f8bb3aa182835d4aafc4aab5b10782f, type: 3}
+  ProjectileDuration: 2

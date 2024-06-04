@@ -20,6 +20,11 @@ public class PlayerFireProjectile : MonoBehaviour
         _objectPool = new ObjectPool<Projectile>(OnCreateProjectile, OnGetProjectile, OnReleaseProjectile, OnDestroyProjectile, true);
     }
 
+    private void OnDisable()
+    {
+        _inputs.OnFireAction -= OnFireAction;
+    }
+
     private void OnDestroyProjectile(Projectile pooledObject)
     {
         Destroy(pooledObject);
@@ -47,6 +52,7 @@ public class PlayerFireProjectile : MonoBehaviour
     {
         //Fire an actual fire ball in the direction
         Projectile projectile = _objectPool.Get();
+        projectile.transform.position = _firePoint.position;
         projectile.LaunchProjectile(direction);
     }
 }
