@@ -6,8 +6,11 @@ using UnityEngine;
 public class PlayerAnims : MonoBehaviour
 {
     [Header("Moving Transform")]
-    [SerializeField] private Transform _graphTransform, _bodyTransform, _shadowTransform;
+    [SerializeField] private Transform _graphTransform;
+    [SerializeField] private Transform _bodyTransform;
+    [SerializeField] private Transform _shadowTransform;
 
+    [Space]
     [SerializeField] private SpriteRenderer _headRenderer;
     [SerializeField] private Sprite[] _heads = new Sprite[2];
 
