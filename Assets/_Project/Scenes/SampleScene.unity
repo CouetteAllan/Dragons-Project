@@ -422,6 +422,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 261765452}
     m_Modifications:
+    - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: _enemyDatas
+      value: 
+      objectReference: {fileID: 11400000, guid: b50b3d051ed3f454d8ca06c37a3f1af6, type: 2}
+    - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: _spawnOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.95
@@ -2446,7 +2454,7 @@ PrefabInstance:
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _enemyDatas
       value: 
-      objectReference: {fileID: 11400000, guid: b50b3d051ed3f454d8ca06c37a3f1af6, type: 2}
+      objectReference: {fileID: 11400000, guid: e39cf732f1bbc28429661cee350aad24, type: 2}
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _spawnOnAwake
       value: 1
@@ -4433,6 +4441,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 587044a3abc6a1345a09086c546e6dc8, type: 2}
   - {fileID: 11400000, guid: 2108bd9ae89a59f40b018d2c99d44749, type: 2}
   - {fileID: 11400000, guid: 32cdef324c6aa0d469defb802fd123e9, type: 2}
+  - {fileID: 11400000, guid: 39e008fe9c2d5844fbc7c1943305ec23, type: 2}
 --- !u!1 &1958414512
 GameObject:
   m_ObjectHideFlags: 0
@@ -4680,6 +4689,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 261765452}
     m_Modifications:
+    - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: _enemyDatas
+      value: 
+      objectReference: {fileID: 11400000, guid: b50b3d051ed3f454d8ca06c37a3f1af6, type: 2}
+    - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: _spawnOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: m_LocalPosition.x
       value: -33.15

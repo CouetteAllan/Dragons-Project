@@ -10,14 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02693d53fd871c54b9f23f7ece073aab, type: 3}
-  m_Name: Wave 3
+  m_Name: Wave 8 First Elite
   m_EditorClassIdentifier: 
   waveComponents:
   - DelayWave: 0
-    EnemyToSpawn: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}
-  - DelayWave: 0
-    EnemyToSpawn: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}
-  - DelayWave: 10
     EnemyToSpawn: {fileID: 11400000, guid: b50b3d051ed3f454d8ca06c37a3f1af6, type: 2}
   - DelayWave: 0
     EnemyToSpawn: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}
@@ -27,6 +23,4 @@ MonoBehaviour:
     EnemyToSpawn: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}
   - DelayWave: 0
     EnemyToSpawn: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}
-  - DelayWave: 0
-    EnemyToSpawn: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}
-  TimeToSpawnInSeconds: 20
+  TimeToSpawnInSeconds: 125

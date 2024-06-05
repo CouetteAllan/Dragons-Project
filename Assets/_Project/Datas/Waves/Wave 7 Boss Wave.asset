@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02693d53fd871c54b9f23f7ece073aab, type: 3}
-  m_Name: Wave 7
+  m_Name: Wave 7 Boss Wave
   m_EditorClassIdentifier: 
   waveComponents:
   - DelayWave: 0

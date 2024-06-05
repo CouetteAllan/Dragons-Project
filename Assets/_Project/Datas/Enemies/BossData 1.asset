@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: BossData 1
   m_EditorClassIdentifier: 
   Type: 4
-  BaseHealth: 300
+  BaseHealth: 340
   BaseDamage: 30
   BaseSpeed: 3
-  Range: 8
+  Range: 10
   AttackRadius: 3
   AttackLenght: 5
-  DashAttackStrenght: 40
+  DashAttackStrenght: 25
   EnemyPrefab: {fileID: 5484748035976209341, guid: 6a0b185ec831b8742ad624112d3ee072, type: 3}
   BossPatterns:
   - {fileID: 11400000, guid: daaeacade8488c14d8fd7a5f25c29467, type: 2}

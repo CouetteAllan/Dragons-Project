@@ -19,9 +19,9 @@ public class EliteStrategy : BasicStrategy
     {
         //Dash attack and check if the player is around;
         _animDone = false;
-        _rb.velocity = attackDirection * _datas.DashAttackStrenght * 6.2f;
-        _rb.freezeRotation = false;
-        _controller.transform.right = attackDirection;
+        _rb.velocity = attackDirection * _datas.DashAttackStrenght * 8.2f;
+        _rb.freezeRotation = true;
+        _controller.transform.right = attackDirection.normalized;
         GameManager.Instance.StartCoroutine(AttackCoroutine());
     }
 
@@ -29,6 +29,9 @@ public class EliteStrategy : BasicStrategy
     {
         while (!_animDone)
         {
+            yield return new WaitForSeconds(.2f);
+            if (_controller == null)
+                yield break;
             var attack = Physics2D.OverlapCircle((Vector2)_controller.transform.position, _datas.AttackRadius, _playerLayer);
             if(attack != null)
             {
@@ -38,11 +41,10 @@ public class EliteStrategy : BasicStrategy
                 }
             }
 
-            yield return new WaitForSeconds(.2f);
 
         }
 
-        _controller.graphTransform.rotation = Quaternion.identity;
+        _controller.transform.rotation = Quaternion.identity;
         _rb.freezeRotation = true;
 
     }

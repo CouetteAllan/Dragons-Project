@@ -51,10 +51,8 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth, IR
     private void FixedUpdate()
     {
         if (_currentState != EnemyState.WalkInRange)
-        {
             return;
-        }
-
+        
         _strategy.DoWalkInRange();
     }
 
@@ -82,6 +80,9 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth, IR
                 StartAttack();
                 break;
             case EnemyState.ReceiveDamage:
+                break;
+            case EnemyState.IsDead:
+                _rb.velocity = Vector2.zero;
                 break;
         }
         _currentState = state;
