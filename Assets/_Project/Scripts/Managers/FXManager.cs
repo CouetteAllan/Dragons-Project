@@ -9,7 +9,7 @@ public class FXManager : Singleton<FXManager>
     [SerializeField] private ParticleSystem _fireExplosion,_healFX;
     [SerializeField] private MMF_Player _thunderFeedback;
 
-    public void CreateFX(string fxName, Vector2 worldPosition)
+    public void CreateFX(string fxName, Vector2 worldPosition, Transform parentTransform = null)
     {
         switch (fxName)
         {
@@ -21,7 +21,8 @@ public class FXManager : Singleton<FXManager>
                 _thunderFeedback.PlayFeedbacks();
                 break;
             case "heal":
-                _healFX.Play();
+                var healFX = Instantiate(_healFX, worldPosition, Quaternion.identity,parentTransform);
+                healFX.Play();
                 break;
         }
     }

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: PickUp Key
   m_EditorClassIdentifier: 
   EffectValue: 2
+  EffectName: key

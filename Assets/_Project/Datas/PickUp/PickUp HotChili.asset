@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PickUp HotChili
   m_EditorClassIdentifier: 
   EffectValue: 2
-  BonusDuration: 5
+  EffectName: chili
+  BonusDuration: 4

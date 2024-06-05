@@ -4,9 +4,10 @@
 public class PickUpHotChiliEffect : PickUpEffect
 {
     public float BonusDuration = 5.0f;
-    public override void DoEffect(PlayerController player)
+    public override bool DoEffect(PlayerController player)
     {
         //Reduce CD
         player.UpgradeCD(BonusDuration);
+        return true;
     }
 }

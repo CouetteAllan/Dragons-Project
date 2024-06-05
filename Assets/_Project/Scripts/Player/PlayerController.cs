@@ -104,7 +104,10 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
         //Update UI
         OnPlayerUpdateHealth?.Invoke(_currentHealth,MaxHealth);
         if (IsPlayerDead())
+        {
             OnPlayerDeath?.Invoke();
+
+        }
     }
 
     private bool IsPlayerDead() => _currentHealth <= 0;
@@ -121,10 +124,14 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
 
     }
 
-    public void PickUpPowerUp(PickUpEffect effect)
+    public bool PickUpPowerUp(PickUpEffect effect)
     {
-        effect.DoEffect(this);
-        _anims.PickUpObject(effect);
+        if (effect.DoEffect(this))
+        {
+            _anims.PickUpObject(effect);
+            return true;
+        }
+        return false;
     }
 
     public void UpgradeCD(float duration)

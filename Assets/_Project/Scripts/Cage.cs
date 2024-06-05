@@ -16,7 +16,6 @@ public class Cage : MonoBehaviour, IInteractable
     private void Awake()
     {
         HideInteraction();
-        _text.text += " " + _companion.CompanionName;
     }
 
     public void DisplayInteraction()
@@ -25,6 +24,14 @@ public class Cage : MonoBehaviour, IInteractable
             return;
         _interactionCanvas.SetActive(true);
         DOTween.To(() => _canvasRenderer.alpha, (value) => _canvasRenderer.alpha = value, 1.0f,.5f);
+        if(GameManager.Instance.Player.KeysNumber <= 0)
+        {
+            _text.text = "You need a key to free " + _companion.CompanionName + " !";
+        }
+        else
+        {
+            _text.text = "Press E to free " + _companion.CompanionName;
+        }
     }
 
     public void HideInteraction()

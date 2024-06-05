@@ -514,7 +514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireProjectileData: {fileID: 11400000, guid: f7dcda48ce7c201428f51c80286bde63, type: 2}
   _firePoint: {fileID: 4721198516217886720}
-  _fireBallCooldown: 0.25
+  _fireBallCooldown: 0.4
 --- !u!114 &9070996567540769377
 MonoBehaviour:
   m_ObjectHideFlags: 0

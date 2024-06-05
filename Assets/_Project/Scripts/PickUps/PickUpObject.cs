@@ -23,8 +23,8 @@ public class PickUpObject : MonoBehaviour
             return;
         if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
-            player.PickUpPowerUp(_datas);
-            Destroy(this.gameObject);
+            if(player.PickUpPowerUp(_datas))
+                Destroy(this.gameObject);
         }
     }
 
