@@ -84,6 +84,9 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth, IR
             case EnemyState.IsDead:
                 _rb.velocity = Vector2.zero;
                 break;
+            case EnemyState.IsStun:
+                _rb.velocity = Vector2.zero;
+                break;
         }
         _currentState = state;
     }

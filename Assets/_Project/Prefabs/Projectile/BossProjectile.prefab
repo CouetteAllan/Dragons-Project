@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7741575754510373772}
   - component: {fileID: 8104210929091993658}
   - component: {fileID: 602516543232308299}
-  m_Layer: 0
+  - component: {fileID: 8819593333829033933}
+  m_Layer: 9
   m_Name: BossProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,6 +89,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _graphTransform: {fileID: 1488532893053889112}
+--- !u!58 &8819593333829033933
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2752396527408609231}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.00025844574}
+  serializedVersion: 2
+  m_Radius: 2.0309772
 --- !u!1 &5392924650984182235
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8972408762745169689}
   - component: {fileID: 3280156204602321426}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 111908134396219787}
   - component: {fileID: 1763403100081981303}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1488532893053889112}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Graph
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -6,12 +6,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputs : MonoBehaviour
 {
+    public static event Action OnPauseButtonPressed;
     public event Action<Vector2> OnFireAction;
     public event Action OnInteractAction;
     public Vector2 Dir { get; private set; }
     
     private PlayerInput _playerInput;
     private PlayerInputActions _inputActions;
+
+    private bool _isDisable;
     private void Awake()
     {
         _inputActions = new();
@@ -19,10 +22,23 @@ public class PlayerInputs : MonoBehaviour
         _inputActions.Player.Move.canceled += Move_canceled;
         _inputActions.Player.Fire.performed += Fire_performed;
         _inputActions.Player.Interact.performed += Interact_performed;
+        _inputActions.Player.PauseButton.performed += PauseButton_performed;
         _inputActions.Enable();
 
         _playerInput = GetComponent<PlayerInput>();
         _playerInput.onControlsChanged += onControlsChanged;
+
+
+    }
+
+    private void PauseButton_performed(InputAction.CallbackContext obj)
+    {
+        OnPauseButtonPressed?.Invoke();
+    }
+
+    public void DisableInputs(bool disable)
+    {
+        _isDisable = disable;
     }
 
     private void OnDisable()
@@ -31,6 +47,7 @@ public class PlayerInputs : MonoBehaviour
         _inputActions.Player.Move.canceled -= Move_canceled;
         _inputActions.Player.Fire.performed -= Fire_performed;
         _inputActions.Player.Interact.performed -= Interact_performed;
+        _inputActions.Player.PauseButton.performed -= PauseButton_performed;
         _inputActions.Disable();
 
         _playerInput.onControlsChanged -= onControlsChanged;
@@ -49,6 +66,8 @@ public class PlayerInputs : MonoBehaviour
 
     private void Fire_performed(InputAction.CallbackContext obj)
     {
+        if (_isDisable)
+            return;
         Vector2 launchDirection = UtilsClass.GetDirToMouse(this.transform.position);
         OnFireAction?.Invoke(launchDirection);
     }
@@ -64,6 +83,7 @@ public class PlayerInputs : MonoBehaviour
     }
     private void Interact_performed(InputAction.CallbackContext obj)
     {
+        if(_isDisable) return;
         OnInteractAction?.Invoke();
     }
 

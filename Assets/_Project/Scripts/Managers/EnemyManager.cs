@@ -40,4 +40,30 @@ public class EnemyManager : Singleton<EnemyManager>
         _spawners[_currentSpawnerIndex].SpawnEnemy(enemy);
         _currentSpawnerIndex = (_currentSpawnerIndex + 1) % _spawners.Count;
     }
+
+    public void AddEnemy(EnemyController enemy)
+    {
+        _enemies.Add(enemy);
+    }
+
+    public void RemoveEnemy(EnemyController enemy)
+    {
+        _enemies.Remove(enemy);
+    }
+
+    public void DisableAllEnemies()
+    {
+        foreach (var enemy in _enemies)
+        {
+            enemy.ChangeEnemyState(EnemyState.IsStun);
+        }
+    }
+
+    public void ReenableAllEnemies()
+    {
+        foreach (var enemy in _enemies)
+        {
+            enemy.ChangeEnemyState(EnemyState.WalkInRange);
+        }
+    }
 }

@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
 
     private void OnInteractAction()
     {
-        if(_currentInteractable!= null)
+        if(_currentInteractable!= null && _canMove)
         {
             _currentInteractable.Interact(this);
         }
@@ -59,10 +59,20 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     {
         if (newState == GameState.StartGame)
             GameManager.Instance.SetPlayer(this);
-        if (newState == GameState.Pause)
-            _canMove = false;
-        else
-            _canMove = true;
+        switch(newState)
+        {
+            case GameState.Pause:
+            case GameState.GameOver:
+            case GameState.Victory:
+                _canMove = false;
+                _inputs.DisableInputs(true);
+                break;
+            case GameState.InGame:
+            case GameState.StartGame:
+                _canMove = true;
+                _inputs.DisableInputs(false);
+                break;
+        }
 
     }
 
