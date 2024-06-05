@@ -105,7 +105,6 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
 
     private void StartAttack()
     {
-        Debug.Log("Enemy Start his attack");
         //Change animator state
         _attackDirection = (_player.transform.position - this.transform.position).normalized;
         _animator.SetFloat("Y Velocity", _rb.velocity.normalized.y);

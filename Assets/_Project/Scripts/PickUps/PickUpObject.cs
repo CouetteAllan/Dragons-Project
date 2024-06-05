@@ -6,21 +6,29 @@ using UnityEngine;
 public class PickUpObject : MonoBehaviour
 {
     [SerializeField] private PickUpEffect _datas;
-
+    private bool _canBePicked = true;
     public void InitObject()
     {
         //Do Drop anim
         this.transform.localScale = Vector3.one * .1f;
         transform.DOScale(Vector3.one, .2f).SetEase(Ease.OutBounce);
         transform.DOPunchPosition(Vector2.up, .5f);
+        _canBePicked = true;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!_canBePicked)
+            return;
         if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
             player.PickUpPowerUp(_datas);
             Destroy(this.gameObject);
         }
+    }
+
+    public void SetPickObject(bool canBePicked)
+    {
+        _canBePicked = canBePicked;
     }
 }
