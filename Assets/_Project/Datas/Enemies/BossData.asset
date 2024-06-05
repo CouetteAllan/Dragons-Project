@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BossData
   m_EditorClassIdentifier: 
   Type: 4
-  BaseHealth: 200
-  BaseDamage: 30
+  BaseHealth: 220
+  BaseDamage: 35
   BaseSpeed: 3
-  Range: 6
+  Range: 8
   AttackRadius: 3
   AttackLenght: 5
   EnemyPrefab: {fileID: 5484748035976209341, guid: 6a0b185ec831b8742ad624112d3ee072, type: 3}

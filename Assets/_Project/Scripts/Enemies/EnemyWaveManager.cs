@@ -8,13 +8,16 @@ public class EnemyWaveManager : MonoBehaviour
 {
     [SerializeField] private List<EnemyWaveDatas> _waves= new List<EnemyWaveDatas>();
     private List<UpdateTimers> _timersWave = new List<UpdateTimers>();
-    private bool _isSpawning = false;
 
     private void Awake()
     {
         GameManager.OnGameStateChanged += OnGameStateChanged;
     }
 
+    private void OnDisable()
+    {
+        GameManager.OnGameStateChanged -= OnGameStateChanged;
+    }
     private void OnGameStateChanged(GameState newState)
     {
         if(newState == GameState.InGame)
@@ -55,7 +58,6 @@ public class EnemyWaveManager : MonoBehaviour
     public void SpawnWave(EnemyWaveDatas wave)
     {
         StartCoroutine(SpawnEnemies(wave));
-        _isSpawning = true;
     }
 
     private IEnumerator SpawnEnemies(EnemyWaveDatas wave)
@@ -67,9 +69,10 @@ public class EnemyWaveManager : MonoBehaviour
         }
         yield return null;
         yield return null;
-        _isSpawning = false;
     }
 }
+
+
 
 [Serializable]
 public class UpdateTimers

@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     public int KeysNumber => _keyNumber;
     private int _keyNumber = 0;
 
+    private IInteractable _currentInteractable;
+    private List<CompanionController> _companions = new List<CompanionController>();
+
     private void Awake()
     {
         _movements = GetComponent<PlayerMovements>();
@@ -41,9 +44,18 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
         _movements.SetSpeed(_baseDatas.BaseSpeed);
         _keyNumber = 0;
 
-}
+        _inputs.OnInteractAction += OnInteractAction;
+    }
 
-private void GameManager_OnGameStateChanged(GameState newState)
+    private void OnInteractAction()
+    {
+        if(_currentInteractable!= null)
+        {
+            _currentInteractable.Interact(this);
+        }
+    }
+
+    private void GameManager_OnGameStateChanged(GameState newState)
     {
         if (newState == GameState.StartGame)
             GameManager.Instance.SetPlayer(this);
@@ -115,9 +127,32 @@ private void GameManager_OnGameStateChanged(GameState newState)
         OnPlayerUpdateKeyNumber?.Invoke(_keyNumber);
     }
 
+    public void AddCompanion(CompanionController companion)
+    {
+        _companions.Add(companion);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.TryGetComponent(out IInteractable interactable))
+        {
+            interactable.DisplayInteraction();
+            _currentInteractable = interactable;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out IInteractable interactable))
+        {
+            interactable.HideInteraction();
+            _currentInteractable = null;
+        }
+    }
+
     private void OnDisable()
     {
         GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
-
+        _inputs.OnInteractAction -= OnInteractAction;
     }
 }

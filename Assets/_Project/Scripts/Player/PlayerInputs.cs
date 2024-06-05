@@ -28,6 +28,7 @@ public class PlayerInputs : MonoBehaviour
     private void OnDisable()
     {
         _inputActions.Player.Move.performed -= Move_performed;
+        _inputActions.Player.Move.canceled -= Move_canceled;
         _inputActions.Player.Fire.performed -= Fire_performed;
         _inputActions.Player.Interact.performed -= Interact_performed;
         _inputActions.Disable();
