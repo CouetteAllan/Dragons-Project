@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireProjectileData
   m_EditorClassIdentifier: 
   ProjectileSpeed: 25
-  ProjectileDamage: 20
+  ProjectileDamage: 18
   ProjectilePrefab: {fileID: 5254817676926127186, guid: 2f8bb3aa182835d4aafc4aab5b10782f, type: 3}
-  ProjectileDuration: 2
+  ProjectileDuration: 1.2
   ProjectileStrategy: {fileID: 11400000, guid: ce837cff2a1bb2b449d97cf2fcfa8c4a, type: 2}

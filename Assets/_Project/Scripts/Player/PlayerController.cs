@@ -124,6 +124,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     public void PickUpPowerUp(PickUpEffect effect)
     {
         effect.DoEffect(this);
+        _anims.PickUpObject(effect);
     }
 
     public void UpgradeCD(float duration)

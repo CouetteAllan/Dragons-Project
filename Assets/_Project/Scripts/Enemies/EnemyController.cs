@@ -10,7 +10,8 @@ public enum EnemyState
     Attack,
     ReceiveDamage,
     IsDead,
-    IsStun
+    IsStun,
+    IsSpawning
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -30,7 +31,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth, IR
     private Rigidbody2D _rb;
     private Animator _animator;
     private float _currentHealth;
-    private EnemyState _currentState = EnemyState.WalkInRange;
+    private EnemyState _currentState = EnemyState.IsSpawning;
 
     private PlayerController _player;
     private Vector2 _attackDirection;
@@ -46,6 +47,8 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth, IR
         _player = GameManager.Instance.Player;
         _animator = GetComponent<Animator>();
         _strategy = _datas.GetStrategy(this, _player, _animator);
+        _currentState = EnemyState.IsSpawning;
+        _strategy.SpawnBehaviour(() => ChangeEnemyState(EnemyState.WalkInRange));
     }
 
     private void FixedUpdate()

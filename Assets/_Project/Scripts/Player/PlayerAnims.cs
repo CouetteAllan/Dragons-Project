@@ -94,5 +94,10 @@ public class PlayerAnims : MonoBehaviour
         _hitFeedback.PlayFeedbacks();
     }
 
+    public void PickUpObject(PickUpEffect pickUp)
+    {
+        FXManager.Instance.CreateFX(pickUp.EffectName, this.transform.position);
+    }
+
 
 }

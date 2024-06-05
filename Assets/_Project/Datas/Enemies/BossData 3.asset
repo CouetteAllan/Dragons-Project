@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2b13e059c1f02340829d64b8949bf41, type: 3}
-  m_Name: BossData 1
+  m_Name: BossData 3
   m_EditorClassIdentifier: 
   Type: 4
   BaseHealth: 340
@@ -23,3 +23,6 @@ MonoBehaviour:
   EnemyPrefab: {fileID: 5484748035976209341, guid: 6a0b185ec831b8742ad624112d3ee072, type: 3}
   BossPatterns:
   - {fileID: 11400000, guid: daaeacade8488c14d8fd7a5f25c29467, type: 2}
+  - {fileID: 11400000, guid: d81e7d4429f779f41b5bdb9301156f38, type: 2}
+  - {fileID: 11400000, guid: 5c86cba9b7a31b34cbb1cdd98fe91860, type: 2}
+  - {fileID: 11400000, guid: 5c86cba9b7a31b34cbb1cdd98fe91860, type: 2}

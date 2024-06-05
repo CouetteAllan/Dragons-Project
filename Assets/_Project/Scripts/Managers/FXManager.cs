@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class FXManager : Singleton<FXManager>
 {
-    [SerializeField] private ParticleSystem _fireExplosion;
+    [SerializeField] private ParticleSystem _fireExplosion,_healFX;
     [SerializeField] private MMF_Player _thunderFeedback;
 
     public void CreateFX(string fxName, Vector2 worldPosition)
@@ -19,6 +19,9 @@ public class FXManager : Singleton<FXManager>
                 break;
             case "thunder":
                 _thunderFeedback.PlayFeedbacks();
+                break;
+            case "heal":
+                _healFX.Play();
                 break;
         }
     }

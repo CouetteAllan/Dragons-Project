@@ -15,12 +15,14 @@ public class PlayerInputs : MonoBehaviour
     private PlayerInputActions _inputActions;
 
     private bool _isDisable;
+    private bool _isFiring = false;
     private void Awake()
     {
         _inputActions = new();
         _inputActions.Player.Move.performed += Move_performed;
         _inputActions.Player.Move.canceled += Move_canceled;
         _inputActions.Player.Fire.performed += Fire_performed;
+        _inputActions.Player.Fire.canceled += Fire_canceled;
         _inputActions.Player.Interact.performed += Interact_performed;
         _inputActions.Player.PauseButton.performed += PauseButton_performed;
         _inputActions.Enable();
@@ -29,6 +31,11 @@ public class PlayerInputs : MonoBehaviour
         _playerInput.onControlsChanged += onControlsChanged;
 
 
+    }
+
+    private void Fire_canceled(InputAction.CallbackContext obj)
+    {
+        _isFiring = false;
     }
 
     private void PauseButton_performed(InputAction.CallbackContext obj)
@@ -46,6 +53,7 @@ public class PlayerInputs : MonoBehaviour
         _inputActions.Player.Move.performed -= Move_performed;
         _inputActions.Player.Move.canceled -= Move_canceled;
         _inputActions.Player.Fire.performed -= Fire_performed;
+        _inputActions.Player.Fire.canceled -= Fire_canceled;
         _inputActions.Player.Interact.performed -= Interact_performed;
         _inputActions.Player.PauseButton.performed -= PauseButton_performed;
         _inputActions.Disable();
@@ -63,14 +71,18 @@ public class PlayerInputs : MonoBehaviour
 
     }
 
-
-    private void Fire_performed(InputAction.CallbackContext obj)
+    private void FixedUpdate()
     {
-        if (_isDisable)
-            return;
+        if (!_isFiring || _isDisable) return;
         Vector2 launchDirection = UtilsClass.GetDirToMouse(this.transform.position);
         OnFireAction?.Invoke(launchDirection);
     }
+
+    private void Fire_performed(InputAction.CallbackContext obj)
+    {
+        _isFiring = true;
+    }
+
 
     private void Move_performed(InputAction.CallbackContext obj)
     {

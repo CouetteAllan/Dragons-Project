@@ -88,7 +88,7 @@ public class PlayerFireProjectile : MonoBehaviour
     public void ChangeCD(float duration)
     {
         _currentBonusDuration += duration;
-        _fireBallCooldown = 0.0f;
+        _fireBallCooldown = 0.2f;
         if(_currentCoroutine == null)
             StartCoroutine(FireBallCDCoroutine());
     }

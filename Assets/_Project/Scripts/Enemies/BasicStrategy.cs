@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class BasicStrategy : IEnemyStrategy
 {
@@ -53,6 +54,12 @@ public class BasicStrategy : IEnemyStrategy
             _controller.ChangeEnemyState(EnemyState.Attack);
             return;
         }
+    }
+
+    public virtual void SpawnBehaviour(Action OnFinishSpawnCallBack)
+    {
+        //RegularSpawn
+        OnFinishSpawnCallBack();
     }
 
     protected bool IsInAttackRange()

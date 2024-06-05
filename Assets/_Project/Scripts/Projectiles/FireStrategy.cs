@@ -3,12 +3,14 @@
 
 public class FireStrategy : ProjectileStrategy
 {
+    public float SplashAreaDamage = 2.0f;
+
     public override void ProjectileDamageBehaviour(Collider2D collision, Projectile projectile)
     {
         if (collision.gameObject.TryGetComponent(out IHittable hittable))
         {
             var hitPoint = collision.ClosestPoint(projectile.transform.position);
-            var hit = Physics2D.OverlapCircleAll(hitPoint, 1.5f);
+            var hit = Physics2D.OverlapCircleAll(hitPoint,SplashAreaDamage);
             if (hit != null)
             {
                 foreach (var hitTarget in hit)
