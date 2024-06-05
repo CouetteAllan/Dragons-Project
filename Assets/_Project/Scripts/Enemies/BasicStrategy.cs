@@ -38,8 +38,13 @@ public class BasicStrategy : IEnemyStrategy
 
     public virtual void DoWalkInRange()
     {
+        if (_controller.gameObject == null)
+            return;
+        if (_animator == null)
+            return;
         var directionTowardPlayer = _player.transform.position - _controller.transform.position;
         _rb.velocity = directionTowardPlayer.normalized * _datas.BaseSpeed;
+        
         _animator.SetFloat("Y Velocity", _rb.velocity.normalized.y);
         if (IsInAttackRange())
         {

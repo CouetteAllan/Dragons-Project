@@ -9,4 +9,7 @@ public class ProjectileData : ScriptableObject
     public float ProjectileDamage = 10.0f;
     public Projectile ProjectilePrefab;
     public float ProjectileDuration = 2.0f;
+
+    [Header("Projectile Behaviour on collision")]
+    public ProjectileStrategy ProjectileStrategy;
 }

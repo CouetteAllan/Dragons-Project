@@ -25,6 +25,7 @@ public class EnemyConfig : ScriptableObject
     public float Range = 5.0f;
     public float AttackRadius = 2.0f;
     public float AttackLenght = 2.0f;
+    public float DashAttackStrenght = 15.0f;
 
 
     [Header("Prefab")]

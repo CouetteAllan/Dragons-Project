@@ -2,6 +2,7 @@ using MoreMountains.Feedbacks;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public enum EnemyState
 {
@@ -32,6 +33,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
     private Vector2 _attackDirection;
 
     private IEnemyStrategy _strategy;
+    private IObjectPool<Projectile> _projectiles;
 
     public void Initialize(EnemyConfig datas)
     {
@@ -112,7 +114,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
         {
             _animator.runtimeAnimatorController = _strategy.ChoseAttack();
         }
-        this._rb.velocity = _attackDirection * 15.0f;
+        this._rb.velocity = _attackDirection * _datas.DashAttackStrenght;
         _animator.SetTrigger("Attack");
     }
 

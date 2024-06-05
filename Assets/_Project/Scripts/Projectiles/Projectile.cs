@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour, IHitSource
 
     private FunctionTimer.FunctionTimerObject _destroyFunction;
 
-    public void Initialize(ProjectileData datas, IObjectPool<Projectile> pool)
+    public void Initialize(ProjectileData datas, IObjectPool<Projectile> pool = null)
     {
         _rb = GetComponent<Rigidbody2D>();
         _datas = datas;
@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour, IHitSource
     {
         _isDisabled = false;
         _rb.velocity = direction * _datas.ProjectileSpeed;
-        transform.rotation = Quaternion.FromToRotation(transform.right, direction);
+        _datas.ProjectileStrategy.ProjectileLaunch(direction,this);
         _destroyFunction = FunctionTimer.CreateObject(() => EndProjectile(), _datas.ProjectileDuration);
     }
 
@@ -41,26 +41,16 @@ public class Projectile : MonoBehaviour, IHitSource
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out IHittable hittable))
-        {
-            var hitPoint = collision.ClosestPoint(this.transform.position);
-            var hit = Physics2D.OverlapCircleAll(hitPoint, 1.5f);
-            if(hit != null)
-            {
-                foreach (var hitTarget in hit)
-                {
-                    if(hitTarget.gameObject.TryGetComponent(out IHittable hittableTarget))
-                        hittableTarget.ReceiveDamage(this, _datas.ProjectileDamage);
-
-                }
-            }
-            FXManager.Instance.CreateFX("fireExplosion", hitPoint);
-            EndProjectile();
-        }
+        _datas.ProjectileStrategy.ProjectileDamageBehaviour(collision, this);
     }
 
-    private void EndProjectile()
+    public void EndProjectile()
     {
+        if (_projectilePool == null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         _destroyFunction = null;
         if (_isDisabled)
             return;
@@ -69,5 +59,7 @@ public class Projectile : MonoBehaviour, IHitSource
         _isDisabled = true;
 
     }
+
+    public ProjectileData GetDatas() => _datas;
 
 }

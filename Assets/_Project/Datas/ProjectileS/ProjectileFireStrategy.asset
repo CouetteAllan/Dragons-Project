@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 166ee6cacac2e424ea662e9d8f2685da, type: 3}
-  m_Name: BossThrow
+  m_Script: {fileID: 11500000, guid: 9a1775e8468012e4591e8af1ec0b4925, type: 3}
+  m_Name: ProjectileFireStrategy
   m_EditorClassIdentifier: 
-  BossAnimPattern: {fileID: 22100000, guid: ff21f577a89a7a141bb268915bfda2bf, type: 2}
-  BossProjectile: {fileID: 11400000, guid: 1fa49af00516d1a4da0b5d78e67858fe, type: 2}
+  FxName: 

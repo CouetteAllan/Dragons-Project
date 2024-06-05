@@ -19,6 +19,7 @@ MonoBehaviour:
   Range: 8
   AttackRadius: 3
   AttackLenght: 5
+  DashAttackStrenght: 40
   EnemyPrefab: {fileID: 5484748035976209341, guid: 6a0b185ec831b8742ad624112d3ee072, type: 3}
   BossPatterns:
   - {fileID: 11400000, guid: daaeacade8488c14d8fd7a5f25c29467, type: 2}
