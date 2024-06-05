@@ -138,7 +138,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
         Gizmos.DrawWireSphere(this.transform.position + (transform.right * (_datas.AttackLenght)),_datas.AttackRadius);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (_datas.Type != EnemyConfig.EnemyType.Boss)
             return;

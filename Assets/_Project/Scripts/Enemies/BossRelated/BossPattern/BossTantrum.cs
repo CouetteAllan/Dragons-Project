@@ -3,19 +3,23 @@
 [CreateAssetMenu(fileName = "BossTantrum", menuName = "Data/Enemy/Boss Pattern/Tantrum")]
 public class BossTantrum : BossPattern
 {
-    public float AreaRadius = 6.0f;
+    public float AreaRadius = 7.0f;
     
     public override void ExecutePattern(Vector2 direction, EnemyController enemy)
     {
+        enemy.GetRB().AddForce(direction * 80.0f, ForceMode2D.Impulse);
         //Deal Damage around him
-        var cast = Physics2D.OverlapCircle(enemy.transform.position, AreaRadius, enemy.GetPlayerLayer());
-        if(cast)
+        var cast = Physics2D.OverlapCircleAll(enemy.transform.position, AreaRadius);
+        if(cast.Length != 0)
         {
-            cast.attachedRigidbody.velocity = Vector3.zero;
-            if(cast.gameObject.TryGetComponent(out PlayerController playerController))
+            foreach (var item in cast)
             {
-                playerController.ReceiveDamage(enemy, enemy.GetDatas().BaseDamage);
+                if (item.gameObject.TryGetComponent(out IHittable playerController))
+                {
+                    playerController.ReceiveDamage(enemy, enemy.GetDatas().BaseDamage);
+                }
             }
+            
         }
     }
 }

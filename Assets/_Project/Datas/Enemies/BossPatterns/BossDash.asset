@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BossDash
   m_EditorClassIdentifier: 
   BossAnimPattern: {fileID: 22100000, guid: 3ec8a558407a37940a47b83f73b53acf, type: 2}
-  DashSpeed: 10
+  DashSpeed: 50

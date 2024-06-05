@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BossTantrum
   m_EditorClassIdentifier: 
   BossAnimPattern: {fileID: 22100000, guid: 6e27f8efbaa7b1747b4ebc34b6ead7ba, type: 2}
-  AreaRadius: 6
+  AreaRadius: 7

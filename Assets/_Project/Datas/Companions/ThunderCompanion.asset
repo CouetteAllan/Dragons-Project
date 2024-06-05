@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3724ce49656e24db4a38b3145fcb53, type: 3}
   m_Name: ThunderCompanion
   m_EditorClassIdentifier: 
+  CompanionName: Coudjus
   CompanionStrategyAttack: {fileID: 11400000, guid: 388e0cfcfda46904aaed9316cfb913f0, type: 2}

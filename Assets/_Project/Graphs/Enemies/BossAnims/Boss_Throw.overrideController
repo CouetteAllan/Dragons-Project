@@ -9,11 +9,9 @@ AnimatorOverrideController:
   m_Name: Boss_Throw
   m_Controller: {fileID: 9100000, guid: e3362bccbc5f75b4caddf399ffb3015c, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 45a43d2c3301c784f992d11e1682238a, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 45a43d2c3301c784f992d11e1682238a, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: f60fac561830c03448044cc73d9dec4c, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: f60fac561830c03448044cc73d9dec4c, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: d512a961adfe1f54b91c03669563ab3a, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 8e97144e7c7d8f84c82d05c79cb883fc, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: ff85c5b9600f1d44f935f09a3f9782c2, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 8e97144e7c7d8f84c82d05c79cb883fc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f79c8c52ec3e6ee41a8fd2b264f3275a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f79c8c52ec3e6ee41a8fd2b264f3275a, type: 2}
