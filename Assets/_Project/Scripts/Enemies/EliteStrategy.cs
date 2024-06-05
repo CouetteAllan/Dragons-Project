@@ -20,8 +20,8 @@ public class EliteStrategy : BasicStrategy
         //Dash attack and check if the player is around;
         _animDone = false;
         _rb.velocity = attackDirection * _datas.DashAttackStrenght * 6.2f;
-        _rb.freezeRotation = true;
-        _controller.transform.right = _player.transform.position - _controller.transform.position;
+        _rb.freezeRotation = false;
+        _controller.transform.right = attackDirection;
         GameManager.Instance.StartCoroutine(AttackCoroutine());
     }
 

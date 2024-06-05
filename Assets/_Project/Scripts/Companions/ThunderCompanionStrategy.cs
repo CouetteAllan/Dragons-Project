@@ -12,6 +12,8 @@ public class ThunderCompanionStrategy : CompanionAttackStrategy
     public float ThunderDamage = 30.0f;
     public float ThunderDelay = 1.0f;
     public LayerMask AimLayer;
+    public bool _debugArea = false;
+    public Transform Circle;
 
     public ParticleSystem ThunderParticles;
     public override bool ShootStrategy()
@@ -27,7 +29,8 @@ public class ThunderCompanionStrategy : CompanionAttackStrategy
             OnCompanionShoot?.Invoke();
             var particles = Instantiate(ThunderParticles, chosenEnemy.transform.position, Quaternion.identity);
             particles.Play();
-            FunctionTimer.Create(() => DelayDealDamageInArea(chosenEnemy.transform.position), ThunderDelay);
+            Vector2 enemyPos = chosenEnemy.transform.position;
+            FunctionTimer.Create(() => DelayDealDamageInArea(enemyPos), ThunderDelay);
             return true;
         }
         else
@@ -38,6 +41,11 @@ public class ThunderCompanionStrategy : CompanionAttackStrategy
 
     private void DelayDealDamageInArea(Vector2 areaPos)
     {
+        if (_debugArea)
+        {
+            var circle = Instantiate(Circle,areaPos, Quaternion.identity);
+            circle.transform.localScale = new Vector3(AreaRange, AreaRange, AreaRange);
+        }
         FXManager.Instance.CreateFX("thunder", Vector2.zero);
         var enemiesInRange = Physics2D.OverlapCircleAll(areaPos, AreaRange);
         if(enemiesInRange != null)
@@ -47,6 +55,10 @@ public class ThunderCompanionStrategy : CompanionAttackStrategy
                 if(enemy.TryGetComponent(out IHittable hittable))
                 {
                     hittable.ReceiveDamage(GameManager.Instance.Player, ThunderDamage);
+                }
+                if(enemy.TryGetComponent(out IReceiveEffect effect))
+                {
+                    effect.ReceiveEffect();
                 }
             }
         }

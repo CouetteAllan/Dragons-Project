@@ -9,16 +9,17 @@ public enum EnemyState
     WalkInRange,
     Attack,
     ReceiveDamage,
-    IsDead
+    IsDead,
+    IsStun
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
+public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth, IReceiveEffect
 {
     public static event Action<EnemyController> OnEnemyDeath;
     public event Action OnAnimDone;
 
-    [SerializeField] private MMF_Player _feedbackHit,_deathFeedback;
+    [SerializeField] private MMF_Player _feedbackHit,_deathFeedback, _stunFeedback;
     [SerializeField] private LayerMask _playerLayer;
     [SerializeField] private EnemyConfig _datas;
     public Transform graphTransform;
@@ -129,8 +130,10 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
 
     public void EndAttackAnimation()
     {
-        ChangeEnemyState(EnemyState.WalkInRange);
         OnAnimDone?.Invoke();
+        if (_currentState == EnemyState.IsStun)
+            return;
+        ChangeEnemyState(EnemyState.WalkInRange);
     }
 
     private void OnDrawGizmosSelected()
@@ -157,5 +160,19 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
     public EnemyConfig GetDatas() => _datas;
     public LayerMask GetPlayerLayer() => _playerLayer;
     public Rigidbody2D GetRB() => _rb;
+
+    public void ReceiveEffect()
+    {
+        //Receive thunder effect
+        ChangeEnemyState(EnemyState.IsStun);
+        _stunFeedback.PlayFeedbacks();
+        _rb.velocity = Vector2.zero;
+    }
+
+    public void EndEffect()
+    {
+        ChangeEnemyState(EnemyState.WalkInRange);
+    }
+
     public Transform GetGraphTransform => graphTransform;
 }

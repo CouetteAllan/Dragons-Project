@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeBetweenAttacks: 6
   AttackRange: 9
-  AreaRange: 4.5
+  AreaRange: 5
   ThunderDamage: 30
   ThunderDelay: 0.8
   AimLayer:
     serializedVersion: 2
     m_Bits: 128
+  _debugArea: 0
+  Circle: {fileID: 1622384564778860652, guid: 14ae5c4fb76b16d4f8fdda37c1934827, type: 3}
   ThunderParticles: {fileID: 4797558307422936237, guid: 5030d675eb9f43341b843cb03a9d2d4a, type: 3}
