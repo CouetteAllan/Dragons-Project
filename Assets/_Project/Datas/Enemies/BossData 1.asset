@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2b13e059c1f02340829d64b8949bf41, type: 3}
-  m_Name: BossData
+  m_Name: BossData 1
   m_EditorClassIdentifier: 
   Type: 4
-  BaseHealth: 220
-  BaseDamage: 35
+  BaseHealth: 300
+  BaseDamage: 30
   BaseSpeed: 3
   Range: 8
   AttackRadius: 3

@@ -46,7 +46,7 @@ public class CompanionController : MonoBehaviour, ICompanion
 
     private void Update()
     {
-        if (Keyboard.current.bKey.wasPressedThisFrame && _currentState == CompanionState.Caged)
+        if (Keyboard.current.pKey.wasPressedThisFrame && _currentState == CompanionState.Caged)
         {
             Deliver(GameManager.Instance.Player);
         }
