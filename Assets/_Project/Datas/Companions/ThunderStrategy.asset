@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d678962d40d07b848901948c7cd60943, type: 3}
   m_Name: ThunderStrategy
   m_EditorClassIdentifier: 
-  TimeBetweenAttacks: 6
+  TimeBetweenAttacks: 4
   AttackRange: 9
   AreaRange: 5
   ThunderDamage: 30
