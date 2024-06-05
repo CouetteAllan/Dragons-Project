@@ -16,10 +16,12 @@ public enum EnemyState
 public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
 {
     public static event Action<EnemyController> OnEnemyDeath;
+    public event Action OnAnimDone;
 
     [SerializeField] private MMF_Player _feedbackHit,_deathFeedback;
     [SerializeField] private LayerMask _playerLayer;
     [SerializeField] private EnemyConfig _datas;
+    public Transform graphTransform;
     public Transform Transform => this.transform;
     public float MaxHealth => _datas.BaseHealth;
     public float CurrentHealth => _currentHealth;
@@ -49,7 +51,6 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
     {
         if (_currentState != EnemyState.WalkInRange)
         {
-            _rb.velocity *= .9f;
             return;
         }
 
@@ -108,6 +109,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
     private void StartAttack()
     {
         //Change animator state
+        _rb.velocity *= .5f;
         _attackDirection = (_player.transform.position - this.transform.position).normalized;
         _animator.SetFloat("Y Velocity", _rb.velocity.normalized.y);
         if(_datas.Type == EnemyConfig.EnemyType.Boss)
@@ -128,6 +130,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
     public void EndAttackAnimation()
     {
         ChangeEnemyState(EnemyState.WalkInRange);
+        OnAnimDone?.Invoke();
     }
 
     private void OnDrawGizmosSelected()
@@ -154,4 +157,5 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth
     public EnemyConfig GetDatas() => _datas;
     public LayerMask GetPlayerLayer() => _playerLayer;
     public Rigidbody2D GetRB() => _rb;
+    public Transform GetGraphTransform => graphTransform;
 }

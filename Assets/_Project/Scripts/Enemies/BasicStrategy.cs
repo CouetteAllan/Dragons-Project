@@ -8,6 +8,7 @@ public class BasicStrategy : IEnemyStrategy
     protected Rigidbody2D _rb;
     protected EnemyConfig _datas;
     protected LayerMask _playerLayer;
+    protected Transform _controllerTransform;
 
     public BasicStrategy(EnemyController controller, PlayerController player, Animator anim)
     {
@@ -17,6 +18,7 @@ public class BasicStrategy : IEnemyStrategy
         _rb = _controller.GetComponent<Rigidbody2D>();
         _datas = _controller.GetDatas();
         _playerLayer = _controller.GetPlayerLayer();
+        _controllerTransform = _controller.transform;
     }
 
     public virtual AnimatorOverrideController ChoseAttack()
