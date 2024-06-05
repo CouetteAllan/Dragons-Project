@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2998073368df145966e1a8610105ef, type: 3}
   m_Name: Player Data
   m_EditorClassIdentifier: 
-  BaseSpeed: 9
+  BaseSpeed: 10.5
   BaseDamage: 10
   BaseHealth: 200
-  InvincibleTime: 0.5
+  InvincibleTime: 0.7

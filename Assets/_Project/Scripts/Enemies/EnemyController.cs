@@ -113,10 +113,10 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth, IR
 
     private void StartAttack()
     {
-        //Change animator state
         _rb.velocity *= .5f;
         _attackDirection = (_player.transform.position - this.transform.position).normalized;
         _animator.SetFloat("Y Velocity", _rb.velocity.normalized.y);
+        Physics2D.IgnoreLayerCollision(this.gameObject.layer, this.gameObject.layer,true);
         if(_datas.Type == EnemyConfig.EnemyType.Boss)
         {
             _animator.runtimeAnimatorController = _strategy.ChoseAttack();
@@ -128,13 +128,14 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth, IR
 
     public void DoAttack()
     {
-        //Actual attack
+        //Actual attack dealing damage
         _strategy.DoAttack(_attackDirection);
     }
 
     public void EndAttackAnimation()
     {
         OnAnimDone?.Invoke();
+        Physics2D.IgnoreLayerCollision(this.gameObject.layer, this.gameObject.layer, false);
         if (_currentState == EnemyState.IsStun)
             return;
         ChangeEnemyState(EnemyState.WalkInRange);
