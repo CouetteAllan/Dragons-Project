@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b13e059c1f02340829d64b8949bf41, type: 3}
+  m_Name: BossData Test Tantrum
+  m_EditorClassIdentifier: 
+  Type: 4
+  BaseHealth: 460
+  BaseDamage: 30
+  BaseSpeed: 3.5
+  Range: 17
+  AttackRadius: 3.15
+  AttackLenght: 15.8
+  DashAttackStrenght: 21
+  EnemyPrefab: {fileID: 5484748035976209341, guid: 6a0b185ec831b8742ad624112d3ee072, type: 3}
+  BossPatterns:
+  - {fileID: 11400000, guid: 5c86cba9b7a31b34cbb1cdd98fe91860, type: 2}

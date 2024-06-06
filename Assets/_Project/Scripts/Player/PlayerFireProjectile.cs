@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ public class PlayerFireProjectile : MonoBehaviour
     [SerializeField] private ProjectileData _fireProjectileData;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private float _fireBallCooldown = .4f;
+    [SerializeField] private MMF_Player _fireFeedback;
     private float _baseFireBallCooldown;
     private bool _fireBallOnCooldown = false;
     private float _cooldown;
@@ -19,6 +21,7 @@ public class PlayerFireProjectile : MonoBehaviour
     private GameObject _fireProjectileParent;
     private float _currentBonusDuration = 0.0f;
     private Coroutine _currentCoroutine = null;
+    private PlayerSounds _sound;
 
     private void Awake()
     {
@@ -83,6 +86,7 @@ public class PlayerFireProjectile : MonoBehaviour
         projectile.LaunchProjectile(direction);
         _fireBallOnCooldown = true;
         OnFireBallLaunched?.Invoke();
+        _fireFeedback.PlayFeedbacks();
     }
 
     public void ChangeCD(float duration)

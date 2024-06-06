@@ -1,18 +1,17 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BossAnims : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private MMF_Player _feedback,_dash;
+    public void PlaySoundTantrum()
     {
-        
+        _feedback.PlayFeedbacks();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void PlaySoundDash()
     {
-        
+        _dash.PlayFeedbacks();
     }
 }

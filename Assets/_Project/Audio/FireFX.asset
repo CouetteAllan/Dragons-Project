@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cb35ed4e3a7554cbb5cdc5e2bdfd4d, type: 3}
   m_Name: FireFX
   m_EditorClassIdentifier: 
-  Sfx: {fileID: 8300000, guid: d8aaeff66f25b45d1af61ac93e540246, type: 3}
+  Sfx: {fileID: 8300000, guid: b8b27c25b3452c2419f1eb723d95c0e0, type: 3}
   RandomSfx: []
   SequentialOrder: 0
   SequentialOrderHoldLast: 0

@@ -8,6 +8,7 @@ public class FXManager : Singleton<FXManager>
 {
     [SerializeField] private ParticleSystem _fireExplosion,_healFX;
     [SerializeField] private MMF_Player _thunderFeedback;
+    [SerializeField] private MMF_Player _fireExplosionSound;
 
     public void CreateFX(string fxName, Vector2 worldPosition, Transform parentTransform = null)
     {
@@ -16,6 +17,7 @@ public class FXManager : Singleton<FXManager>
             case "fireExplosion":
                 var fx = Instantiate(_fireExplosion, worldPosition, Quaternion.identity);
                 fx.Play();
+                _fireExplosionSound.PlayFeedbacks();
                 break;
             case "thunder":
                 _thunderFeedback.PlayFeedbacks();
