@@ -57,7 +57,7 @@ public class CompanionController : MonoBehaviour, ICompanion
         if (_player == null || _currentState == CompanionState.Caged)
             return;
         var directionTowardPlayer = (this.transform.position - _player.transform.position).normalized;
-        this.transform.position = Vector2.Lerp(this.transform.position,(((Vector2)_player.transform.position + Vector2.up) + Vector2.right * _currentIndex), Time.deltaTime * 2.0f);
+        this.transform.position = Vector2.Lerp(this.transform.position,(((Vector2)_player.transform.position + Vector2.up) + Vector2.right * (float)_currentIndex * 2), Time.deltaTime * 2.0f);
         _anims.SwapGraphScale(directionTowardPlayer.x > 0.01f);
 
         _currentCooldownAttack -= Time.deltaTime;

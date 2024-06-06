@@ -6,11 +6,12 @@ public class DarkStrategy : CompanionAttackStrategy
 
     public float DashDuration = .2f;
     public float DashSpeed = 10.0f;
+    public float DashCooldown = 1.0f;
     public LayerMask EnemyLayer;
     public LayerMask ProjectileLayer;
     public override bool ShootStrategy()
     {
         GameManager.Instance.Player.UnlockDash(this);
-        return true;
+        return false;
     }
 }

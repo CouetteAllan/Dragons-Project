@@ -356,7 +356,7 @@ MonoBehaviour:
   AddDirectionalNoise: 1
   DirectionalNoiseStrengthMin: {x: 0.25, y: 0.25, z: 0.25}
   DirectionalNoiseStrengthMax: {x: 0.25, y: 0.25, z: 0.25}
-  RandomnessSeed: {x: -0.47843206, y: -0.7083325, z: -0.22304593}
+  RandomnessSeed: {x: -0.4784321, y: -0.7083325, z: -0.2230459}
   RandomizeSeedOnShake: 1
   UseAttenuation: 1
   AttenuationCurve:

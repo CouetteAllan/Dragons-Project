@@ -9,7 +9,8 @@ public class PlayerMovements : MonoBehaviour
     private Rigidbody2D _rb;
 
     private bool _isDashing = false;
-
+    private bool _isOnCooldown = false;
+    private UpdateTimers _cooldownTimer= null;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -30,9 +31,17 @@ public class PlayerMovements : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if(_cooldownTimer != null)
+        {
+            _cooldownTimer.Update();
+        }
+    }
+
     public void Dash(DarkStrategy dashStats, Vector2 dashDirection)
     {
-        if (_isDashing)
+        if (_isDashing || _isOnCooldown)
             return;
         StartCoroutine(DashCoroutine(dashStats, dashDirection));
     }
@@ -41,7 +50,6 @@ public class PlayerMovements : MonoBehaviour
     {
         float baseDrag = _rb.drag;
         _isDashing = true;
-        _rb.isKinematic = true;
         _rb.drag = 0.0f;
         float startTime = Time.time;
         Physics2D.IgnoreLayerCollision(7, this.gameObject.layer, true);
@@ -54,13 +62,13 @@ public class PlayerMovements : MonoBehaviour
         }
         _isDashing = false;
         _rb.velocity *= .4f;
-        _rb.isKinematic = false;
         _rb.drag = baseDrag;
         Physics2D.IgnoreLayerCollision(7, this.gameObject.layer, false);
         Physics2D.IgnoreLayerCollision(9, this.gameObject.layer, false);
 
         Debug.Log(stats.EnemyLayer + " " + (int) stats.EnemyLayer);
-
+        _isOnCooldown = true;
+        _cooldownTimer = new UpdateTimers(stats.DashCooldown,() => _isOnCooldown = false);
 
     }
 
