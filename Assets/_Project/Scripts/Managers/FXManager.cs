@@ -24,6 +24,8 @@ public class FXManager : Singleton<FXManager>
                 var healFX = Instantiate(_healFX, worldPosition, Quaternion.identity,parentTransform);
                 healFX.Play();
                 break;
+            case "mageProjectile":
+                break;
         }
     }
 

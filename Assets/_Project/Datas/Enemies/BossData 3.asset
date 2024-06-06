@@ -16,10 +16,10 @@ MonoBehaviour:
   BaseHealth: 460
   BaseDamage: 30
   BaseSpeed: 3.5
-  Range: 14
-  AttackRadius: 3
-  AttackLenght: 5
-  DashAttackStrenght: 20
+  Range: 15
+  AttackRadius: 3.15
+  AttackLenght: 15.8
+  DashAttackStrenght: 21
   EnemyPrefab: {fileID: 5484748035976209341, guid: 6a0b185ec831b8742ad624112d3ee072, type: 3}
   BossPatterns:
   - {fileID: 11400000, guid: daaeacade8488c14d8fd7a5f25c29467, type: 2}

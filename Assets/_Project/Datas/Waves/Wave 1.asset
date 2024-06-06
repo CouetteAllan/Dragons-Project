@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveComponents:
   - DelayWave: 0
-    EnemyToSpawn: {fileID: 11400000, guid: 366b75a4376aed844abc990e38fd17a9, type: 2}
+    EnemyToSpawn: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}
   - DelayWave: 0
-    EnemyToSpawn: {fileID: 11400000, guid: 366b75a4376aed844abc990e38fd17a9, type: 2}
+    EnemyToSpawn: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}
   - DelayWave: 0
-    EnemyToSpawn: {fileID: 11400000, guid: 366b75a4376aed844abc990e38fd17a9, type: 2}
+    EnemyToSpawn: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}
+  - DelayWave: 0
+    EnemyToSpawn: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}
   TimeToSpawnInSeconds: 0

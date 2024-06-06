@@ -22,7 +22,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private RectTransform _victoryDestination, _victoryStart;
 
     [Header("Buttons related")]
-    [SerializeField] private Button _resumeButton,_replay;
+    [SerializeField] private Button _resumeButton;
+    [SerializeField] private Button[] _replayButtons;
     [SerializeField] private Button[] _quitButtons;
 
     protected override void Awake()
@@ -30,7 +31,10 @@ public class UIManager : Singleton<UIManager>
         base.Awake();
         GameManager.OnGameStateChanged += OnGameStateChanged;
         _resumeButton.onClick.AddListener(() => DisplayPause(false));
-        _replay.onClick.AddListener(() => GameManager.Instance.RestartScene());
+        foreach (var replay in _replayButtons)
+        {
+            replay.onClick.AddListener(() => GameManager.Instance.RestartScene());
+        }
         foreach (var b in _quitButtons)
         {
             b.onClick.AddListener(() => GameManager.Instance.BackToMainMenu());

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Mage Data
   m_EditorClassIdentifier: 
   Type: 2
-  BaseHealth: 60
+  BaseHealth: 35
   BaseDamage: 10
   BaseSpeed: 6
-  Range: 15
+  Range: 19
   AttackRadius: 1.2
   AttackLenght: 3
-  DashAttackStrenght: 15
+  DashAttackStrenght: -8
   EnemyPrefab: {fileID: 5484748035976209341, guid: a268d8011d8172c41b0e1c98370a3fd9, type: 3}
   BossPatterns: []

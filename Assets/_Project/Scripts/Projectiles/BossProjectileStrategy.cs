@@ -14,7 +14,7 @@ public class BossProjectileStrategy : ProjectileStrategy
             var hitPoint = collision.ClosestPoint(projectile.transform.position);
             hittable.ReceiveDamage(projectile, projectile.GetDatas().ProjectileDamage);
 
-            FXManager.Instance.CreateFX("fireExplosion", hitPoint);
+            FXManager.Instance.CreateFX(FxName, hitPoint);
             projectile.EndProjectile();
         }
     }

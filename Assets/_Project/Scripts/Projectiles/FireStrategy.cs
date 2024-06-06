@@ -22,7 +22,7 @@ public class FireStrategy : ProjectileStrategy
                 }
             }
 
-            FXManager.Instance.CreateFX("fireExplosion", hitPoint);
+            FXManager.Instance.CreateFX(FxName, hitPoint);
             projectile.EndProjectile();
         }
         

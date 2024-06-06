@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BossProjectile
   m_EditorClassIdentifier: 
   ProjectileSpeed: 20
-  ProjectileDamage: 10
+  ProjectileDamage: 35
   ProjectilePrefab: {fileID: 8104210929091993658, guid: 371dd9691b634484c886ed36a0e74767, type: 3}
   ProjectileDuration: 2
   ProjectileStrategy: {fileID: 11400000, guid: b43b56c18062e994f9b6b7029d746494, type: 2}

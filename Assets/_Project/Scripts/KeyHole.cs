@@ -9,14 +9,20 @@ public class KeyHole : MonoBehaviour, IInteractable
 {
     [SerializeField] private CanvasGroup _fadeCanvas;
     [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private GameObject _keyGraph;
     public static event Action OnPlayerUseKey;
     private bool _isDisabled;
 
+    private void Start()
+    {
+        _keyGraph.SetActive(false);
+    }
 
     private void DeliverMom()
     {
         HideInteraction();
         Mother.Instance.OnPlayerUseKey();
+        _keyGraph.SetActive(true);
         _isDisabled = true;
     }
 

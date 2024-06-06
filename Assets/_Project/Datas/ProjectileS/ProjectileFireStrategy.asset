@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1775e8468012e4591e8af1ec0b4925, type: 3}
   m_Name: ProjectileFireStrategy
   m_EditorClassIdentifier: 
-  FxName: 
+  FxName: fireExplosion
+  SplashAreaDamage: 2

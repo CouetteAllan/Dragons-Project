@@ -76,6 +76,7 @@ public class EnemyWaveManager : MonoBehaviour
 
     public void SpawnWave(EnemyWaveDatas wave)
     {
+        Debug.Log("Currently Spawning the wave: " + wave.name + " at " + Time.timeSinceLevelLoad);
         StartCoroutine(SpawnEnemies(wave));
     }
 

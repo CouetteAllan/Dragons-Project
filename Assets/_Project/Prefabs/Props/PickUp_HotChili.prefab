@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 1514066030558260119}
   - component: {fileID: 5710588565964620262}
   - component: {fileID: 6759271180719903108}
+  - component: {fileID: 6022695458797046915}
   m_Layer: 0
   m_Name: PickUp_HotChili
   m_TagString: Untagged
@@ -284,6 +285,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6258199
+--- !u!114 &6022695458797046915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5544238592853731504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8583ce2185c3034d87f8e11620d91f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _function: 1
 --- !u!1001 &5623403549763865001
 PrefabInstance:
   m_ObjectHideFlags: 0

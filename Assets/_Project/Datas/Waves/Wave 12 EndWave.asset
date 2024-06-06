@@ -13,16 +13,26 @@ MonoBehaviour:
   m_Name: Wave 12 EndWave
   m_EditorClassIdentifier: 
   waveComponents:
-  - DelayWave: 10
-    EnemyToSpawn: {fileID: 11400000, guid: 059631bd5693e414a83b6639d5282215, type: 2}
   - DelayWave: 0
     EnemyToSpawn: {fileID: 11400000, guid: 059631bd5693e414a83b6639d5282215, type: 2}
   - DelayWave: 0
     EnemyToSpawn: {fileID: 11400000, guid: 059631bd5693e414a83b6639d5282215, type: 2}
   - DelayWave: 0
-    EnemyToSpawn: {fileID: 11400000, guid: 059631bd5693e414a83b6639d5282215, type: 2}
+    EnemyToSpawn: {fileID: 11400000, guid: 78c0313d15a020740b50cfd4b5d06c18, type: 2}
   - DelayWave: 0
-    EnemyToSpawn: {fileID: 11400000, guid: 059631bd5693e414a83b6639d5282215, type: 2}
+    EnemyToSpawn: {fileID: 11400000, guid: 78c0313d15a020740b50cfd4b5d06c18, type: 2}
   - DelayWave: 0
-    EnemyToSpawn: {fileID: 11400000, guid: 059631bd5693e414a83b6639d5282215, type: 2}
-  TimeToSpawnInSeconds: 260
+    EnemyToSpawn: {fileID: 11400000, guid: 78c0313d15a020740b50cfd4b5d06c18, type: 2}
+  - DelayWave: 0
+    EnemyToSpawn: {fileID: 11400000, guid: 71d9e214328b2894c889c1df4eebc5b5, type: 2}
+  - DelayWave: 5
+    EnemyToSpawn: {fileID: 11400000, guid: 71d9e214328b2894c889c1df4eebc5b5, type: 2}
+  - DelayWave: 0
+    EnemyToSpawn: {fileID: 11400000, guid: 71d9e214328b2894c889c1df4eebc5b5, type: 2}
+  - DelayWave: 0
+    EnemyToSpawn: {fileID: 11400000, guid: 71d9e214328b2894c889c1df4eebc5b5, type: 2}
+  - DelayWave: 0
+    EnemyToSpawn: {fileID: 11400000, guid: 71d9e214328b2894c889c1df4eebc5b5, type: 2}
+  - DelayWave: 0
+    EnemyToSpawn: {fileID: 11400000, guid: 366b75a4376aed844abc990e38fd17a9, type: 2}
+  TimeToSpawnInSeconds: 270

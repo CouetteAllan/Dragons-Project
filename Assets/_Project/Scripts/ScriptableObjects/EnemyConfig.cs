@@ -44,6 +44,8 @@ public class EnemyConfig : ScriptableObject
                 return new BossStrategy(controller, player, anim, BossPatterns);
             case EnemyType.Elite:
                 return new EliteStrategy(controller,player,anim);
+            case EnemyType.Mage:
+                return new MageStrategy(controller,player,anim);
             default:
                 return new BasicStrategy(controller, player, anim);
         }

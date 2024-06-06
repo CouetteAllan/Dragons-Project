@@ -11,15 +11,15 @@ public class PickUpObject : MonoBehaviour
     {
         //Do Drop anim
         this.transform.localScale = Vector3.one * .1f;
-        transform.DOScale(Vector3.one, .2f).SetEase(Ease.OutBounce);
-        transform.DOPunchPosition(Vector2.up, 3.0f);
+        transform.DOScale(Vector3.one, .8f).SetEase(Ease.OutBounce);
+        transform.DOPunchPosition(Vector2.up, 3.0f,vibrato: 5);
         Breath();
         _canBePicked = true;
     }
 
     public void Breath()
     {
-        transform.DOBlendableScaleBy(Vector2.one * .8f, 1.0f).SetEase(Ease.OutBack).SetDelay(.5f).SetLoops(-1, LoopType.Yoyo);
+        this.gameObject.transform?.DOBlendableScaleBy(Vector2.one * .4f, 1.0f).SetEase(Ease.OutBack).SetDelay(.5f).SetLoops(-1, LoopType.Yoyo).SetId(this.gameObject).SetAutoKill(true);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -28,8 +28,8 @@ public class PickUpObject : MonoBehaviour
             return;
         if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
-            if(player.PickUpPowerUp(_datas))
-                Destroy(this.gameObject);
+            if (player.PickUpPowerUp(_datas, this))
+                this.GetComponent<DisablerScript>().DisableObject(this);
         }
     }
 

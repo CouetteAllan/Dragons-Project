@@ -16,19 +16,19 @@ MonoBehaviour:
   - DelayWave: 0
     EnemyToSpawn: {fileID: 11400000, guid: b50b3d051ed3f454d8ca06c37a3f1af6, type: 2}
   - DelayWave: 0
-    EnemyToSpawn: {fileID: 11400000, guid: 79fde65410e386c459a31f6344ce4319, type: 2}
+    EnemyToSpawn: {fileID: 11400000, guid: 366b75a4376aed844abc990e38fd17a9, type: 2}
   - DelayWave: 0
-    EnemyToSpawn: {fileID: 11400000, guid: 79fde65410e386c459a31f6344ce4319, type: 2}
+    EnemyToSpawn: {fileID: 11400000, guid: 366b75a4376aed844abc990e38fd17a9, type: 2}
   - DelayWave: 0
-    EnemyToSpawn: {fileID: 11400000, guid: 79fde65410e386c459a31f6344ce4319, type: 2}
+    EnemyToSpawn: {fileID: 11400000, guid: 366b75a4376aed844abc990e38fd17a9, type: 2}
   - DelayWave: 0
     EnemyToSpawn: {fileID: 11400000, guid: 79fde65410e386c459a31f6344ce4319, type: 2}
   - DelayWave: 4
     EnemyToSpawn: {fileID: 11400000, guid: 79fde65410e386c459a31f6344ce4319, type: 2}
   - DelayWave: 0
-    EnemyToSpawn: {fileID: 11400000, guid: 79fde65410e386c459a31f6344ce4319, type: 2}
-  - DelayWave: 0
-    EnemyToSpawn: {fileID: 11400000, guid: 79fde65410e386c459a31f6344ce4319, type: 2}
+    EnemyToSpawn: {fileID: 11400000, guid: 71d9e214328b2894c889c1df4eebc5b5, type: 2}
   - DelayWave: 0
     EnemyToSpawn: {fileID: 11400000, guid: 71d9e214328b2894c889c1df4eebc5b5, type: 2}
-  TimeToSpawnInSeconds: 125
+  - DelayWave: 0
+    EnemyToSpawn: {fileID: 11400000, guid: 71d9e214328b2894c889c1df4eebc5b5, type: 2}
+  TimeToSpawnInSeconds: 170

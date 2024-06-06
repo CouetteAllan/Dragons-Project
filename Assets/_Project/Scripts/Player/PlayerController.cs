@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     public static event Action<float,float> OnPlayerUpdateHealth;
     public static event Action OnPlayerDeath;
     public static event Action<int> OnPlayerUpdateKeyNumber;
+    public static event Action<Transform> OnPlayerPickUpKey;
+    public static event Action OnPlayerLowHealth;
+    public static event Action OnPlayerNormalHealth;
 
     [SerializeField] private PlayerData _baseDatas;
 
@@ -28,6 +31,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
 
     private bool _isInvincible = false;
     private bool _godMode = false;
+    private bool _thresholdReached = false;
 
     public int KeysNumber => _keyNumber;
     private int _keyNumber = 0;
@@ -128,6 +132,17 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
         _currentHealth = Mathf.Clamp(_currentHealth + healthChange, 0, MaxHealth);
         //Update UI
         OnPlayerUpdateHealth?.Invoke(_currentHealth,MaxHealth);
+        if(_currentHealth <= Threshold() && !_thresholdReached)
+        {
+            _thresholdReached = true;
+            OnPlayerLowHealth?.Invoke();
+        }
+        else if(_currentHealth > Threshold() && _thresholdReached)
+        {
+            _thresholdReached = false;
+            OnPlayerNormalHealth?.Invoke();
+        }
+
         if (IsPlayerDead())
         {
             OnPlayerDeath?.Invoke();
@@ -152,9 +167,9 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
 
     }
 
-    public bool PickUpPowerUp(PickUpEffect effect)
+    public bool PickUpPowerUp(PickUpEffect effect, PickUpObject pickUpObject)
     {
-        if (effect.DoEffect(this))
+        if (effect.DoEffect(this, pickUpObject))
         {
             _anims.PickUpObject(effect);
             return true;
@@ -167,10 +182,11 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
         _fireScript.ChangeCD(duration);
     }
 
-    public void AddKey()
+    public void AddKey(Transform keyTransform)
     {
         _keyNumber++;
         OnPlayerUpdateKeyNumber?.Invoke(_keyNumber);
+        OnPlayerPickUpKey?.Invoke(keyTransform);
     }
 
     public void RemoveKey()
@@ -212,6 +228,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
         }
     }
 
+    private float Threshold() => MaxHealth / 3.0f;
     private void OnDisable()
     {
         GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
