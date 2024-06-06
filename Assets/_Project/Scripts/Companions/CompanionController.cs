@@ -43,7 +43,7 @@ public class CompanionController : MonoBehaviour, ICompanion
         {
             _tutoText.transform.DOScale(Vector3.zero, .5f).SetEase(Ease.OutFlash).OnComplete(() => _tutoText.gameObject.SetActive(false));
         }
-        , 6.0f);
+        , 10.0f);
     }
 
     public void SetCompanionIndex(int index) => _currentIndex = index;

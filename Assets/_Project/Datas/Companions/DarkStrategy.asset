@@ -15,6 +15,7 @@ MonoBehaviour:
   TimeBetweenAttacks: 1
   DashDuration: 0.2
   DashSpeed: 50
+  DashCooldown: 1.2
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 128

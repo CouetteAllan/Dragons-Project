@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wave 2
   m_EditorClassIdentifier: 
   waveComponents:
-  - DelayWave: 0
+  - DelayWave: 20
     EnemyToSpawn: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}
   - DelayWave: 0
     EnemyToSpawn: {fileID: 11400000, guid: bbde564d1da573947b9a0207c238bfa1, type: 2}

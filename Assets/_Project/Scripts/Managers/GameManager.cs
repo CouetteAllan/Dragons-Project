@@ -78,7 +78,7 @@ public class GameManager : Singleton<GameManager>
                 break;
             case GameState.StartGame:
                 StartCoroutine(StartGame());
-                EnemyManager.Instance.ReenableAllEnemies();
+                EnemyManager.Instance.ReEnableAllEnemies();
 
                 break;
             case GameState.InGame:

@@ -10,6 +10,7 @@ public class FireStrategy : ProjectileStrategy
         if (collision.gameObject.TryGetComponent(out IHittable hittable))
         {
             var hitPoint = collision.ClosestPoint(projectile.transform.position);
+
             var hit = Physics2D.OverlapCircleAll(hitPoint,SplashAreaDamage);
             if (hit != null)
             {
@@ -20,8 +21,10 @@ public class FireStrategy : ProjectileStrategy
 
                 }
             }
+
             FXManager.Instance.CreateFX("fireExplosion", hitPoint);
             projectile.EndProjectile();
         }
+        
     }
 }

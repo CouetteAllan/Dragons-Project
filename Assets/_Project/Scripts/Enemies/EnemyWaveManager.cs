@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +8,7 @@ public class EnemyWaveManager : MonoBehaviour
     [SerializeField] private List<EnemyWaveDatas> _waves= new List<EnemyWaveDatas>();
     private List<UpdateTimers> _timersWave = new List<UpdateTimers>();
 
+    private bool _pauseEnemies = false;
     private void Awake()
     {
         GameManager.OnGameStateChanged += OnGameStateChanged;
@@ -29,6 +29,7 @@ public class EnemyWaveManager : MonoBehaviour
         }
         else
         {
+            if(!_pauseEnemies)
             foreach (var timer in _timersWave)
             {
                 timer._isPaused = true;
@@ -41,6 +42,24 @@ public class EnemyWaveManager : MonoBehaviour
         foreach(var wave in _waves)
         {
             _timersWave.Add(new UpdateTimers(wave.TimeToSpawnInSeconds,() => SpawnWave(wave)));
+        }
+    }
+
+    public void PauseSpawn()
+    {
+        _pauseEnemies = true;
+        foreach (var timer in _timersWave)
+        {
+            timer._isPaused = true;
+        }
+    }
+
+    public void ResumeSpawn()
+    {
+        _pauseEnemies = false;
+        foreach (var timer in _timersWave)
+        {
+            timer._isPaused = false;
         }
     }
 
@@ -65,37 +84,8 @@ public class EnemyWaveManager : MonoBehaviour
         foreach (var component in wave.waveComponents)
         {
             yield return new WaitForSeconds(component.DelayWave);
+            yield return new WaitUntil(() => _pauseEnemies == false);
             EnemyManager.Instance.SpawnEnemy(component.EnemyToSpawn);
-        }
-        yield return null;
-        yield return null;
-    }
-}
-
-
-
-[Serializable]
-public class UpdateTimers
-{
-    private float _time;
-    private Action Callback;
-    public bool _isPaused = false;
-    private bool _done = false;
-    public UpdateTimers(float time, Action callbackOnFinish)
-    {
-        _time = time;
-        Callback = callbackOnFinish;
-    }
-
-    public void Update()
-    {
-        if (_done || _isPaused)
-            return;
-        _time -= Time.deltaTime;
-        if (_time <= 0)
-        {
-            _done = true;
-            Callback?.Invoke();
         }
     }
 }

@@ -44,6 +44,12 @@ public class Projectile : MonoBehaviour, IHitSource
         _datas.ProjectileStrategy.ProjectileDamageBehaviour(collision, this);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        _datas.ProjectileStrategy.ProjectileDamageBehaviour(collision.collider, this);
+
+    }
+
     public void EndProjectile()
     {
         if (_projectilePool == null)

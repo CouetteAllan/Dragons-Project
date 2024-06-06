@@ -49,6 +49,8 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth, IR
         _strategy = _datas.GetStrategy(this, _player, _animator);
         _currentState = EnemyState.IsSpawning;
         _strategy.SpawnBehaviour(() => ChangeEnemyState(EnemyState.WalkInRange));
+
+        EnemyManager.Instance.AddEnemy(this);
     }
 
     private void FixedUpdate()
@@ -86,6 +88,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth, IR
                 break;
             case EnemyState.IsDead:
                 _rb.velocity = Vector2.zero;
+                EnemyManager.Instance.RemoveEnemy(this);
                 break;
             case EnemyState.IsStun:
                 _rb.velocity = Vector2.zero;

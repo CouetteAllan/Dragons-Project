@@ -10,6 +10,8 @@ public class EnemyManager : Singleton<EnemyManager>
     private List<EnemyController> _enemies = new List<EnemyController>();
     private int _currentSpawnerIndex;
 
+    [SerializeField] private int _maxEnemyOnField = 12;
+    [SerializeField] private int _minimumEnemiesOnField = 5;
 
 
     protected override void Awake()
@@ -44,11 +46,19 @@ public class EnemyManager : Singleton<EnemyManager>
     public void AddEnemy(EnemyController enemy)
     {
         _enemies.Add(enemy);
+        if(_enemies.Count >= _maxEnemyOnField)
+        {
+            _waveManager.PauseSpawn();
+        }
     }
 
     public void RemoveEnemy(EnemyController enemy)
     {
         _enemies.Remove(enemy);
+        if (_enemies.Count <= _minimumEnemiesOnField)
+        {
+            _waveManager.ResumeSpawn();
+        }
     }
 
     public void DisableAllEnemies()
@@ -59,7 +69,7 @@ public class EnemyManager : Singleton<EnemyManager>
         }
     }
 
-    public void ReenableAllEnemies()
+    public void ReEnableAllEnemies()
     {
         foreach (var enemy in _enemies)
         {

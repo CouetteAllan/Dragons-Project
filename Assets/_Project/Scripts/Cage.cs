@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.PlayerLoop;
+using MoreMountains.Feedbacks;
 
 public class Cage : MonoBehaviour, IInteractable
 {
@@ -12,6 +13,7 @@ public class Cage : MonoBehaviour, IInteractable
     [SerializeField] private GameObject _interactionCanvas;
     [SerializeField] private CanvasGroup _canvasRenderer;
     [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private MMF_Player _deliverFeedback;
 
     private bool _isDisabled = false;
     private void Awake()
@@ -48,6 +50,7 @@ public class Cage : MonoBehaviour, IInteractable
         if (player.KeysNumber <= 0)
             return;
         _companionController.Deliver(player);
+        _deliverFeedback.PlayFeedbacks();
         int currentIndex = player.AddCompanion(_companionController);
         _companionController.SetCompanionIndex(currentIndex);
         HideInteraction();
