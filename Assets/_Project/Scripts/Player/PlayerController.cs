@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerMovements),typeof(PlayerInputs))]
 public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     private bool _canMove = true;
 
     private bool _isInvincible = false;
+    private bool _godMode = false;
 
     public int KeysNumber => _keyNumber;
     private int _keyNumber = 0;
@@ -85,6 +86,11 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     // Update is called once per frame
     void Update()
     {
+        if (Keyboard.current.oKey.wasPressedThisFrame)
+        {
+            _godMode = !_godMode;
+            Debug.Log("God mode toggle: " + _godMode);
+        }
         if (!_canMove)
             return;
         if(Mathf.Abs(_inputs.Dir.x) > .1f)
@@ -117,7 +123,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
 
     public void ReceiveDamage(IHitSource source, float damage)
     {
-        if (_isInvincible)
+        if (_isInvincible || _godMode)
             return;
         //receive damage
         _anims.AnimTakeDamage();
@@ -145,6 +151,12 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     public void AddKey()
     {
         _keyNumber++;
+        OnPlayerUpdateKeyNumber?.Invoke(_keyNumber);
+    }
+
+    public void RemoveKey()
+    {
+        _keyNumber--;
         OnPlayerUpdateKeyNumber?.Invoke(_keyNumber);
     }
 

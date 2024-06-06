@@ -73,7 +73,8 @@ public class GameManager : Singleton<GameManager>
         CurrentState = newState;
         switch (newState)
         {
-            case GameState.MainMenu:
+            case GameState.Victory:
+                Debug.Log("you won the game !");
                 break;
             case GameState.StartGame:
                 StartCoroutine(StartGame());

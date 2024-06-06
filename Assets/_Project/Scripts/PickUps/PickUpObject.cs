@@ -13,8 +13,13 @@ public class PickUpObject : MonoBehaviour
         this.transform.localScale = Vector3.one * .1f;
         transform.DOScale(Vector3.one, .2f).SetEase(Ease.OutBounce);
         transform.DOPunchPosition(Vector2.up, 3.0f);
-        transform.DOBlendableScaleBy(Vector2.one * .8f, 1.0f).SetEase(Ease.InOutBack).SetDelay(.5f).SetLoops(-1,LoopType.Yoyo);
+        Breath();
         _canBePicked = true;
+    }
+
+    public void Breath()
+    {
+        transform.DOBlendableScaleBy(Vector2.one * .8f, 1.0f).SetEase(Ease.OutBack).SetDelay(.5f).SetLoops(-1, LoopType.Yoyo);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
