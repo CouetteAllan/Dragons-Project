@@ -15,8 +15,8 @@ public class KeyHole : MonoBehaviour, IInteractable
 
     private void DeliverMom()
     {
-        OnPlayerUseKey?.Invoke();
         HideInteraction();
+        Mother.Instance.OnPlayerUseKey();
         _isDisabled = true;
     }
 

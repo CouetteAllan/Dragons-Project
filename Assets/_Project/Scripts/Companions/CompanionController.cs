@@ -1,6 +1,8 @@
+using DG.Tweening;
 using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +16,7 @@ public enum CompanionState
 public class CompanionController : MonoBehaviour, ICompanion
 {
     [SerializeField] private CompanionData _datas;
+    [SerializeField] private TextMeshPro _tutoText;
     CompanionAnims _anims;
     PlayerController _player;
     CompanionState _currentState = CompanionState.Caged;
@@ -32,6 +35,15 @@ public class CompanionController : MonoBehaviour, ICompanion
         _player = player;
         //Change companion state
         _currentState = CompanionState.Free;
+        //Display tuto text
+
+        _tutoText.text = _datas.TutoText;
+        _tutoText.transform.DOScale(Vector3.one, 1.0f).SetEase(Ease.OutBounce);
+        FunctionTimer.Create(() =>
+        {
+            _tutoText.transform.DOScale(Vector3.zero, .5f).SetEase(Ease.OutFlash).OnComplete(() => _tutoText.gameObject.SetActive(false));
+        }
+        , 6.0f);
     }
 
     public void SetCompanionIndex(int index) => _currentIndex = index;

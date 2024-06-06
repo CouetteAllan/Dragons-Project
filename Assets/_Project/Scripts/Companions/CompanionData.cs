@@ -8,4 +8,7 @@ public class CompanionData : ScriptableObject
     public string CompanionName = "Companion";
 
     public CompanionAttackStrategy CompanionStrategyAttack;
+
+    [TextArea(2,5)]
+    public string TutoText = "";
 }

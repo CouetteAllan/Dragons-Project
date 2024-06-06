@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CompanionName: Tenebros
   CompanionStrategyAttack: {fileID: 11400000, guid: c5ef91587cd64c648b14c8d550ffebd4, type: 2}
+  TutoText: Press Right Click to perform a shadow dash
