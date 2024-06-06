@@ -93,6 +93,8 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     void Start()
     {
         _currentHealth = MaxHealth;
+        _keyNumber = 0;
+        OnPlayerUpdateKeyNumber?.Invoke(_keyNumber);
     }
 
     // Update is called once per frame

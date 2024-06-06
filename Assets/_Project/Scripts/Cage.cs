@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.PlayerLoop;
 
 public class Cage : MonoBehaviour, IInteractable
 {
@@ -50,6 +51,7 @@ public class Cage : MonoBehaviour, IInteractable
         int currentIndex = player.AddCompanion(_companionController);
         _companionController.SetCompanionIndex(currentIndex);
         HideInteraction();
+        player.RemoveKey();
         _isDisabled = true;
     }
 }
