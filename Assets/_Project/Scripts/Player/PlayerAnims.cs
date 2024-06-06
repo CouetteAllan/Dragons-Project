@@ -14,8 +14,8 @@ public class PlayerAnims : MonoBehaviour
     [Space]
     [SerializeField] private SpriteRenderer _headRenderer;
     [SerializeField] private Sprite[] _heads = new Sprite[2];
-    [SerializeField] private MMF_Player _hitFeedback;
-
+    [SerializeField] private MMF_Player _hitFeedback, _dashFeedback;
+    [SerializeField] private TrailRenderer _trail;
     private float _timerBeforeReswap = 0.0f;
     private Coroutine _currentCoroutine = null;
     private PlayerInputs _inputs;
@@ -92,6 +92,13 @@ public class PlayerAnims : MonoBehaviour
     public void AnimTakeDamage()
     {
         _hitFeedback.PlayFeedbacks();
+    }
+
+    public void AnimDash()
+    {
+        _dashFeedback.PlayFeedbacks();
+        _trail.emitting = true;
+        FunctionTimer.Create(() => _trail.emitting = false, .2f);
     }
 
     public void PickUpObject(PickUpEffect pickUp)

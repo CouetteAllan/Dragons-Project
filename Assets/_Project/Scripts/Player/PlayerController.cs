@@ -56,7 +56,10 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
 
     private void OnDash()
     {
-        _movements.Dash(_dashData, _inputs.LastValidDir);
+        if(_movements.Dash(_dashData, _inputs.LastValidDir))
+        {
+            _anims.AnimDash();
+        }
     }
 
     private void OnInteractAction()

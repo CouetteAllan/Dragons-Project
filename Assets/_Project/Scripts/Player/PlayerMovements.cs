@@ -39,11 +39,12 @@ public class PlayerMovements : MonoBehaviour
         }
     }
 
-    public void Dash(DarkStrategy dashStats, Vector2 dashDirection)
+    public bool Dash(DarkStrategy dashStats, Vector2 dashDirection)
     {
         if (_isDashing || _isOnCooldown)
-            return;
+            return false;
         StartCoroutine(DashCoroutine(dashStats, dashDirection));
+        return true;
     }
 
     IEnumerator DashCoroutine(DarkStrategy stats, Vector2 dashDirection)

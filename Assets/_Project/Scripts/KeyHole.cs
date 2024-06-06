@@ -51,6 +51,7 @@ public class KeyHole : MonoBehaviour, IInteractable
         if (player.KeysNumber > 0)
         {
             DeliverMom();
+            player.RemoveKey();
         }
     }
 }
