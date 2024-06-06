@@ -20,5 +20,5 @@ MonoBehaviour:
   AttackRadius: 1.2
   AttackLenght: 3
   DashAttackStrenght: 15
-  EnemyPrefab: {fileID: 5484748035976209341, guid: a37809b0c6c82704ba73ffad0962ec1e, type: 3}
+  EnemyPrefab: {fileID: 5484748035976209341, guid: a268d8011d8172c41b0e1c98370a3fd9, type: 3}
   BossPatterns: []
