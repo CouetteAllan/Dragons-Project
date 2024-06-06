@@ -18,5 +18,12 @@ public class PlayerMovements : MonoBehaviour
         _rb.velocity = direction * _playerSpeed;
     }
 
+    public void Disable()
+    {
+        _rb.velocity = Vector3.zero;
+        _rb.isKinematic = true;
+
+    }
+
     public void SetSpeed(float speed) => _playerSpeed = speed;
 }

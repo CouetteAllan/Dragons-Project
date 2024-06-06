@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
             case GameState.Victory:
                 _canMove = false;
                 _inputs.DisableInputs(true);
+                _movements.Disable();
                 break;
             case GameState.InGame:
             case GameState.StartGame:
