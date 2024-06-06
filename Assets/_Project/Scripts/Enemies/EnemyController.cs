@@ -113,6 +113,11 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth, IR
         return _currentHealth <= 0.0f;
     }
 
+    public void RegisterPlayerPosition()
+    {
+        _attackDirection = (_player.transform.position - this.transform.position).normalized;
+    }
+
 
     private void StartAttack()
     {

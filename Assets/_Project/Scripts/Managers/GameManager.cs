@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
 public enum GameState
@@ -25,15 +26,36 @@ public class GameManager : Singleton<GameManager>
 
     private bool _isInPause = false;
 
-    public void Start()
+    private void Start()
     {
         PlayerInputs.OnPauseButtonPressed += OnPauseButtonPressed;
-        ChangeGameState(GameState.StartGame);
+        PlayerController.OnPlayerDeath += OnPlayerDeath;
+        SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
+        var scene = SceneManager.GetActiveScene();
+        if(scene.buildIndex == 0)
+            ChangeGameState(GameState.MainMenu);
+        else
+            ChangeGameState(GameState.StartGame);
+        
+    }
+
+    private void SceneManager_activeSceneChanged(Scene previousScene, Scene newActiveScene)
+    {
+        if(newActiveScene == SceneManager.GetSceneByBuildIndex(1))
+        {
+            ChangeGameState(GameState.StartGame);
+        }
+    }
+
+    private void OnPlayerDeath()
+    {
+        GameManager.Instance.ChangeGameState(GameState.GameOver);
     }
 
     private void OnDisable()
     {
         PlayerInputs.OnPauseButtonPressed -= OnPauseButtonPressed;
+        PlayerController.OnPlayerDeath -= OnPlayerDeath;
     }
 
     private void OnPauseButtonPressed()
@@ -90,14 +112,15 @@ public class GameManager : Singleton<GameManager>
         ChangeGameState(GameState.InGame);
     }
 
-    private void Update()
-    {
-        if (Keyboard.current.jKey.wasPressedThisFrame)
-            ChangeGameState(GameState.Pause);
-    }
 
     public void BackToMainMenu()
     {
+        ChangeGameState(GameState.MainMenu);
+        SceneManager.LoadScene(0);
+    }
 
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(1);
     }
 }

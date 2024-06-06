@@ -12,8 +12,8 @@ public class PickUpObject : MonoBehaviour
         //Do Drop anim
         this.transform.localScale = Vector3.one * .1f;
         transform.DOScale(Vector3.one, .2f).SetEase(Ease.OutBounce);
-        transform.DOPunchPosition(Vector2.up, 1.0f);
-        transform.DOBlendableScaleBy(Vector2.one * 1.2f, 1.0f).SetEase(Ease.InOutBack).SetDelay(.5f).SetLoops(-1,LoopType.Yoyo);
+        transform.DOPunchPosition(Vector2.up, 3.0f);
+        transform.DOBlendableScaleBy(Vector2.one * .8f, 1.0f).SetEase(Ease.InOutBack).SetDelay(.5f).SetLoops(-1,LoopType.Yoyo);
         _canBePicked = true;
     }
 

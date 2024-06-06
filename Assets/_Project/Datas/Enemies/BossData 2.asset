@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BossData 2
   m_EditorClassIdentifier: 
   Type: 4
-  BaseHealth: 340
+  BaseHealth: 460
   BaseDamage: 30
-  BaseSpeed: 3
-  Range: 12
+  BaseSpeed: 3.5
+  Range: 13
   AttackRadius: 3
   AttackLenght: 5
   DashAttackStrenght: 20

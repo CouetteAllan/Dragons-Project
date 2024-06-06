@@ -16,7 +16,7 @@ MonoBehaviour:
   BaseHealth: 100
   BaseDamage: 20
   BaseSpeed: 7
-  Range: 11
+  Range: 12
   AttackRadius: 2
   AttackLenght: 4
   DashAttackStrenght: 5

@@ -106,7 +106,10 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
         if (IsPlayerDead())
         {
             OnPlayerDeath?.Invoke();
-
+            //Disable the player;
+            var rb = GetComponent<Rigidbody2D>();
+            rb.isKinematic = false;
+            rb.velocity = Vector3.zero;
         }
     }
 
