@@ -718,7 +718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _feedbackHit: {fileID: 6277557226261355078}
   _deathFeedback: {fileID: 7883337875903558286}
-  _stunFeedback: {fileID: 0}
+  _stunFeedback: {fileID: 656200793632988857}
   _playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -798,7 +798,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c1733ff9e2b4594cbb820dbda8cc890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _impulseForce: 10
 --- !u!95 &8996971405649724010
 Animator:
   serializedVersion: 5
@@ -12211,6 +12210,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0703a1f28eb00de49bd96f250326a3ad, type: 3}
+--- !u!114 &656200793632988857 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7873394439694658547, guid: 0703a1f28eb00de49bd96f250326a3ad, type: 3}
+  m_PrefabInstance: {fileID: 7230706919023572298}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6082343899805318248 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3472400859343816994, guid: 0703a1f28eb00de49bd96f250326a3ad, type: 3}

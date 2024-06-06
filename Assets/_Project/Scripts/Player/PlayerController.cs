@@ -32,8 +32,13 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     public int KeysNumber => _keyNumber;
     private int _keyNumber = 0;
 
+    private bool _dashUnlocked = false;
+
     private IInteractable _currentInteractable;
     private List<CompanionController> _companions = new List<CompanionController>();
+
+    private DarkStrategy _dashData;
+    public DarkStrategy DashData => _dashData;
 
     private void Awake()
     {
@@ -46,6 +51,12 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
         _keyNumber = 0;
 
         _inputs.OnInteractAction += OnInteractAction;
+        _inputs.OnDash += OnDash;
+    }
+
+    private void OnDash()
+    {
+        _movements.Dash(_dashData, _inputs.LastValidDir);
     }
 
     private void OnInteractAction()
@@ -87,11 +98,13 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     // Update is called once per frame
     void Update()
     {
+#if UNITY_EDITOR
         if (Keyboard.current.oKey.wasPressedThisFrame)
         {
             _godMode = !_godMode;
             Debug.Log("God mode toggle: " + _godMode);
         }
+#endif
         if (!_canMove)
             return;
         if(Mathf.Abs(_inputs.Dir.x) > .1f)
@@ -102,7 +115,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     {
         if (!_canMove)
             return;
-        _movements.UpdateMovement(_inputs.Dir.normalized);
+        _movements.UpdateMovement(_inputs.Dir.normalized, _baseDatas.BaseSpeed);
     }
 
     public void ChangeHealth(float healthChange)
@@ -161,9 +174,19 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
         OnPlayerUpdateKeyNumber?.Invoke(_keyNumber);
     }
 
-    public void AddCompanion(CompanionController companion)
+    public int AddCompanion(CompanionController companion)
     {
         _companions.Add(companion);
+        int currentCompanionIndex = _companions.IndexOf(companion);
+        return currentCompanionIndex;
+    }
+
+    public void UnlockDash(DarkStrategy dark)
+    {
+        if (_dashUnlocked)
+            return;
+        _inputs.UnlockDash();
+        _dashData = dark;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -188,5 +211,7 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     {
         GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
         _inputs.OnInteractAction -= OnInteractAction;
+        _inputs.OnDash -= OnDash;
+
     }
 }

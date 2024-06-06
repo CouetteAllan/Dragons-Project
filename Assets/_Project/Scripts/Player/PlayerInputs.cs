@@ -9,7 +9,19 @@ public class PlayerInputs : MonoBehaviour
     public static event Action OnPauseButtonPressed;
     public event Action<Vector2> OnFireAction;
     public event Action OnInteractAction;
+    public event Action OnDash;
     public Vector2 Dir { get; private set; }
+    public Vector2 LastValidDir {
+        get
+        {
+            if (Mathf.Abs(Dir.x) > .1f || Mathf.Abs(Dir.y) > .1f)
+            {
+                return Dir;
+            }
+            else
+                return Vector2.right;
+        }
+            }
     
     private PlayerInput _playerInput;
     private PlayerInputActions _inputActions;
@@ -56,6 +68,7 @@ public class PlayerInputs : MonoBehaviour
         _inputActions.Player.Fire.canceled -= Fire_canceled;
         _inputActions.Player.Interact.performed -= Interact_performed;
         _inputActions.Player.PauseButton.performed -= PauseButton_performed;
+        _inputActions.Player.Dash.performed -= Dash_performed;
         _inputActions.Disable();
 
         _playerInput.onControlsChanged -= onControlsChanged;
@@ -99,5 +112,13 @@ public class PlayerInputs : MonoBehaviour
         OnInteractAction?.Invoke();
     }
 
+    public void UnlockDash()
+    {
+        _inputActions.Player.Dash.performed += Dash_performed;
+    }
 
+    private void Dash_performed(InputAction.CallbackContext obj)
+    {
+        OnDash?.Invoke();
+    }
 }

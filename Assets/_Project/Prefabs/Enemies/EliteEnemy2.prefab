@@ -4971,7 +4971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _feedbackHit: {fileID: 6277557226261355078}
   _deathFeedback: {fileID: 7883337875903558286}
-  _stunFeedback: {fileID: 0}
+  _stunFeedback: {fileID: 7390131455462662512}
   _playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -11205,6 +11205,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3472400859343816994, guid: 0703a1f28eb00de49bd96f250326a3ad, type: 3}
   m_PrefabInstance: {fileID: 850318176440011395}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7390131455462662512 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7873394439694658547, guid: 0703a1f28eb00de49bd96f250326a3ad, type: 3}
+  m_PrefabInstance: {fileID: 850318176440011395}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2619875330175748923
 PrefabInstance:
   m_ObjectHideFlags: 0

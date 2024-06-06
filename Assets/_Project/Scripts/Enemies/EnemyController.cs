@@ -178,7 +178,8 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth, IR
     {
         //Receive thunder effect
         ChangeEnemyState(EnemyState.IsStun);
-        _stunFeedback.PlayFeedbacks();
+        if(_stunFeedback != null)
+            _stunFeedback.PlayFeedbacks();
         _rb.velocity = Vector2.zero;
     }
 

@@ -47,7 +47,8 @@ public class Cage : MonoBehaviour, IInteractable
         if (player.KeysNumber <= 0)
             return;
         _companionController.Deliver(player);
-        player.AddCompanion(_companionController);
+        int currentIndex = player.AddCompanion(_companionController);
+        _companionController.SetCompanionIndex(currentIndex);
         HideInteraction();
         _isDisabled = true;
     }

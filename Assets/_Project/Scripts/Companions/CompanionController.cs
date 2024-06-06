@@ -19,6 +19,7 @@ public class CompanionController : MonoBehaviour, ICompanion
     CompanionState _currentState = CompanionState.Caged;
 
     private float _currentCooldownAttack = 0.0f;
+    private int _currentIndex = 0;
 
     private void Awake()
     {
@@ -32,6 +33,8 @@ public class CompanionController : MonoBehaviour, ICompanion
         //Change companion state
         _currentState = CompanionState.Free;
     }
+
+    public void SetCompanionIndex(int index) => _currentIndex = index;
 
     public bool Shoot()
     {
@@ -54,7 +57,7 @@ public class CompanionController : MonoBehaviour, ICompanion
         if (_player == null || _currentState == CompanionState.Caged)
             return;
         var directionTowardPlayer = (this.transform.position - _player.transform.position).normalized;
-        this.transform.position = Vector2.Lerp(this.transform.position,((Vector2)_player.transform.position + Vector2.up), Time.deltaTime * 2.0f);
+        this.transform.position = Vector2.Lerp(this.transform.position,(((Vector2)_player.transform.position + Vector2.up) + Vector2.right * _currentIndex), Time.deltaTime * 2.0f);
         _anims.SwapGraphScale(directionTowardPlayer.x > 0.01f);
 
         _currentCooldownAttack -= Time.deltaTime;

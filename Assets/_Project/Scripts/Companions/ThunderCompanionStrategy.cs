@@ -41,6 +41,8 @@ public class ThunderCompanionStrategy : CompanionAttackStrategy
 
     private void DelayDealDamageInArea(Vector2 areaPos)
     {
+        if (areaPos == null)
+            return;
         if (_debugArea)
         {
             var circle = Instantiate(Circle,areaPos, Quaternion.identity);
