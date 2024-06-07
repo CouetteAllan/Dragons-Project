@@ -14,7 +14,7 @@ public class PlayerAnims : MonoBehaviour
     [Space]
     [SerializeField] private SpriteRenderer _headRenderer;
     [SerializeField] private Sprite[] _heads = new Sprite[2];
-    [SerializeField] private MMF_Player _hitFeedback, _dashFeedback;
+    [SerializeField] private MMF_Player _hitFeedback, _dashFeedback, _eatFeedback;
     [SerializeField] private TrailRenderer _trail;
     private float _timerBeforeReswap = 0.0f;
     private Coroutine _currentCoroutine = null;
@@ -104,6 +104,8 @@ public class PlayerAnims : MonoBehaviour
     public void PickUpObject(PickUpEffect pickUp)
     {
         FXManager.Instance.CreateFX(pickUp.EffectName, this.transform.position,this.transform);
+        if(pickUp.EffectName == "heal")
+            _eatFeedback.PlayFeedbacks();
     }
 
 

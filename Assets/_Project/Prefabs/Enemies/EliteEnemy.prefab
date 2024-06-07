@@ -11924,6 +11924,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5697722903212381912, guid: 6c949e991528be440b7a3fd876b99846, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 5697722903212381912, guid: 6c949e991528be440b7a3fd876b99846, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6012239595429259568, guid: 6c949e991528be440b7a3fd876b99846, type: 3}
       propertyPath: m_Name
       value: LightParticles

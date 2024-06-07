@@ -31,11 +31,11 @@ MonoBehaviour:
     EnemyToSpawn: {fileID: 11400000, guid: 71d9e214328b2894c889c1df4eebc5b5, type: 2}
   - DelayWave: 0
     EnemyToSpawn: {fileID: 11400000, guid: 71d9e214328b2894c889c1df4eebc5b5, type: 2}
-  - DelayWave: 0
+  - DelayWave: 5
     EnemyToSpawn: {fileID: 11400000, guid: b50b3d051ed3f454d8ca06c37a3f1af6, type: 2}
   - DelayWave: 0
     EnemyToSpawn: {fileID: 11400000, guid: 78c0313d15a020740b50cfd4b5d06c18, type: 2}
-  - DelayWave: 10
+  - DelayWave: 5
     EnemyToSpawn: {fileID: 11400000, guid: 78c0313d15a020740b50cfd4b5d06c18, type: 2}
   - DelayWave: 0
     EnemyToSpawn: {fileID: 11400000, guid: 78c0313d15a020740b50cfd4b5d06c18, type: 2}
@@ -47,4 +47,4 @@ MonoBehaviour:
     EnemyToSpawn: {fileID: 11400000, guid: 366b75a4376aed844abc990e38fd17a9, type: 2}
   - DelayWave: 0
     EnemyToSpawn: {fileID: 11400000, guid: 366b75a4376aed844abc990e38fd17a9, type: 2}
-  TimeToSpawnInSeconds: 310
+  TimeToSpawnInSeconds: 320
