@@ -315,8 +315,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Thank you for playing !
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51a1aa396f4dea44fbb24fc6076c78b8, type: 2}
-  m_sharedMaterial: {fileID: -8700429325407997208, guid: 51a1aa396f4dea44fbb24fc6076c78b8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bf8a0a8b21d66394cbc918fe844a2294, type: 2}
+  m_sharedMaterial: {fileID: -6903092856107216420, guid: bf8a0a8b21d66394cbc918fe844a2294, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -661,10 +661,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Graphs:
 
+    Fabien Capelier
+
+    Simeon
+
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51a1aa396f4dea44fbb24fc6076c78b8, type: 2}
-  m_sharedMaterial: {fileID: -8700429325407997208, guid: 51a1aa396f4dea44fbb24fc6076c78b8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bf8a0a8b21d66394cbc918fe844a2294, type: 2}
+  m_sharedMaterial: {fileID: -6903092856107216420, guid: bf8a0a8b21d66394cbc918fe844a2294, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -676,9 +680,9 @@ MonoBehaviour:
   m_colorMode: 3
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 0.13163051, g: 0.9622642, b: 0.8986261, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 0.31287822, g: 0.48564285, b: 0.745283, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -799,22 +803,22 @@ MonoBehaviour:
 
     Allan "Rayqdr" COUETTE'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51a1aa396f4dea44fbb24fc6076c78b8, type: 2}
-  m_sharedMaterial: {fileID: -8700429325407997208, guid: 51a1aa396f4dea44fbb24fc6076c78b8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bf8a0a8b21d66394cbc918fe844a2294, type: 2}
+  m_sharedMaterial: {fileID: -6903092856107216420, guid: bf8a0a8b21d66394cbc918fe844a2294, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4292017845
-  m_fontColor: {r: 0.70980394, g: 0.99607843, b: 0.82539856, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 0.13163051, g: 0.9622642, b: 0.8986261, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 0.31287822, g: 0.48564285, b: 0.745283, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
