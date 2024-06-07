@@ -47,6 +47,8 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void AddEnemy(EnemyController enemy)
     {
+        if (_isKilling)
+            return;
         _enemies.Add(enemy);
         if(_enemies.Count >= _maxEnemyOnField)
         {
@@ -89,10 +91,12 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private IEnumerator KillCoroutine()
     {
-        foreach (var enemy in _enemies)
+        for (int i = 0; i < _enemies.Count; i++)
         {
-            enemy.ChangeEnemyState(EnemyState.IsDead);
-            yield return new WaitForSeconds(.4f);
+            if (_enemies[i] == null)
+                continue;
+            _enemies[i].ChangeEnemyState(EnemyState.IsDead);
+            yield return new WaitForSecondsRealtime(.3f);
         }
     }
 }

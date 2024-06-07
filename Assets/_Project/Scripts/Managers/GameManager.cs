@@ -91,6 +91,7 @@ public class GameManager : Singleton<GameManager>
             case GameState.Victory:
                 Debug.Log("you won the game !");
                 EnemyManager.Instance.DisableAllEnemies();
+                EndSequenceScript.Instance.PlayEndSequence();
                 break;
             case GameState.StartGame:
                 StartCoroutine(StartGame());

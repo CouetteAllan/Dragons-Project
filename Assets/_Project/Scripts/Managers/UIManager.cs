@@ -64,7 +64,7 @@ public class UIManager : Singleton<UIManager>
                 DisplayPause(true);
                 break;
             case GameState.Victory:
-                DisplayEndGame(true, _victoryObject, _victoryParent, _victoryDestination, _victoryStart, _backgroundVictory);
+                //DisplayEndGame(true, _victoryObject, _victoryParent, _victoryDestination, _victoryStart, _backgroundVictory);
                 break;
             case GameState.GameOver:
                 //Display GameOver

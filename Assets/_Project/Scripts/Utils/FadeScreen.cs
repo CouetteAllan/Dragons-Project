@@ -33,8 +33,9 @@ public class FadeScreen : MonoBehaviour
         float startFade = 1.0f;
         while (startFade >= 0.0f)
         {
+            Debug.Log("we fadin'");
             _fadeMat.SetFloat("_FadeTime", startFade);
-            startFade -= Time.deltaTime * .5f;
+            startFade -= Time.deltaTime * .2f;
             yield return null;
         }
         _fadeMat.SetFloat("_FadeTime", 0.0f);

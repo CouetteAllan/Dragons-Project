@@ -12,6 +12,6 @@ public class BossAnims : MonoBehaviour
     }
     public void PlaySoundDash()
     {
-        _dash.PlayFeedbacks();
+        //_dash.PlayFeedbacks();
     }
 }

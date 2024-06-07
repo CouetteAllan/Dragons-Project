@@ -1309,7 +1309,7 @@ PrefabInstance:
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _enemyDatas
       value: 
-      objectReference: {fileID: 11400000, guid: 78c0313d15a020740b50cfd4b5d06c18, type: 2}
+      objectReference: {fileID: 11400000, guid: e39cf732f1bbc28429661cee350aad24, type: 2}
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _spawnOnAwake
       value: 0
@@ -1722,7 +1722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &354016253
 Animator:
   serializedVersion: 5
@@ -2102,7 +2102,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3165942800488051908, guid: 7e984f512e89b60468e829489e8883e3, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 6b1a357af89a43c4da4aaabdcc3108ce, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.616
   m_Pitch: 1
@@ -3422,7 +3422,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 23.2
+  orthographic size: 13
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3447,7 +3447,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 10.9, z: -43.366447}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3944,7 +3944,6 @@ GameObject:
   m_Component:
   - component: {fileID: 619394802}
   - component: {fileID: 619394801}
-  - component: {fileID: 619394803}
   - component: {fileID: 619394806}
   - component: {fileID: 619394805}
   m_Layer: 0
@@ -4019,27 +4018,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &619394803
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619394800}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f95e5119bc1615b4590300a5bcc0096d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &619394805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4213,6 +4191,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 261765452}
     m_Modifications:
+    - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: _spawnOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.6
@@ -5156,7 +5138,7 @@ PrefabInstance:
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _enemyDatas
       value: 
-      objectReference: {fileID: 11400000, guid: 366b75a4376aed844abc990e38fd17a9, type: 2}
+      objectReference: {fileID: 11400000, guid: e39cf732f1bbc28429661cee350aad24, type: 2}
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _spawnOnAwake
       value: 0
@@ -6708,6 +6690,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 261765452}
     m_Modifications:
+    - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: _spawnOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.6
@@ -7456,7 +7442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1242679846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8970,6 +8956,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 261765452}
     m_Modifications:
+    - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: _enemyDatas
+      value: 
+      objectReference: {fileID: 11400000, guid: e39cf732f1bbc28429661cee350aad24, type: 2}
+    - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: _spawnOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35.88
@@ -9844,6 +9838,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 261765452}
     m_Modifications:
+    - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
+      propertyPath: _spawnOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: m_LocalPosition.x
       value: 38.87
@@ -11319,7 +11317,7 @@ MonoBehaviour:
         AudioGroup: {fileID: -2273146209696275378, guid: 7e984f512e89b60468e829489e8883e3, type: 2}
         RecycleAudioSource: {fileID: 0}
         Loop: 1
-        Persistent: 0
+        Persistent: 1
         DoNotPlayIfClipAlreadyPlaying: 0
         StopSoundOnFeedbackStop: 1
         Fade: 1
@@ -11419,6 +11417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1882088589}
   - component: {fileID: 1882088590}
+  - component: {fileID: 1882088591}
   m_Layer: 0
   m_Name: EndSequence
   m_TagString: Untagged
@@ -11440,7 +11439,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 420747724}
-  - {fileID: 2103154325}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &1882088590
@@ -11453,8 +11451,8 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: d884c975f92756a4892b38ac65dad92a, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
+  m_InitialState: 0
+  m_WrapMode: 0
   m_DirectorUpdateMode: 2
   m_InitialTime: 0
   m_SceneBindings:
@@ -11470,6 +11468,22 @@ PlayableDirector:
     value: {fileID: 1054080574}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &1882088591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882088588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e9a4dcdd72a7848bf387f47c92a44b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isPersistant: 0
+  _virtualCamera: {fileID: 1242679845}
+  _mom: {fileID: 354016252}
+  _sequence: {fileID: 1882088590}
 --- !u!1 &1926303927
 GameObject:
   m_ObjectHideFlags: 0
@@ -12159,37 +12173,6 @@ Transform:
   - {fileID: 1969294342}
   m_Father: {fileID: 1460296991}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2103154324
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2103154325}
-  m_Layer: 0
-  m_Name: FadeScreen
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2103154325
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103154324}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1882088589}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &183338485629536280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12379,7 +12362,7 @@ PrefabInstance:
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _enemyDatas
       value: 
-      objectReference: {fileID: 11400000, guid: 78c0313d15a020740b50cfd4b5d06c18, type: 2}
+      objectReference: {fileID: 11400000, guid: e39cf732f1bbc28429661cee350aad24, type: 2}
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _spawnOnAwake
       value: 0
