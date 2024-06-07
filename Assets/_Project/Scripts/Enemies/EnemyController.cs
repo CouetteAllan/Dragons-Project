@@ -88,6 +88,7 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth, IR
                 break;
             case EnemyState.IsDead:
                 _rb.velocity = Vector2.zero;
+                _deathFeedback.PlayFeedbacks();
                 EnemyManager.Instance.RemoveEnemy(this);
                 break;
             case EnemyState.IsStun:
@@ -106,7 +107,6 @@ public class EnemyController : MonoBehaviour, IHittable, IHitSource, IHealth, IR
             Destroy(_animator);
             //TODO: Explosion feedback
             OnEnemyDeath?.Invoke(this);
-            _deathFeedback.PlayFeedbacks();
             ChangeEnemyState(EnemyState.IsDead);
         }
     }

@@ -45,6 +45,21 @@ public class GameManager : Singleton<GameManager>
         {
             ChangeGameState(GameState.StartGame);
         }
+
+        if(newActiveScene != SceneManager.GetSceneByBuildIndex(0))
+            this.gameObject.GetComponent<FadeScreen>().FadeIn();
+    }
+
+    public void FadeOut()
+    {
+        this.gameObject.GetComponent<FadeScreen>().FadeOut();
+        StartCoroutine(DelayChangeSceneCoroutine());
+    }
+
+    IEnumerator DelayChangeSceneCoroutine()
+    {
+        yield return new WaitForSecondsRealtime(2.0f);
+        SceneManager.LoadScene(2);
     }
 
     private void OnPlayerDeath()
@@ -75,6 +90,7 @@ public class GameManager : Singleton<GameManager>
         {
             case GameState.Victory:
                 Debug.Log("you won the game !");
+                EnemyManager.Instance.DisableAllEnemies();
                 break;
             case GameState.StartGame:
                 StartCoroutine(StartGame());

@@ -23,6 +23,7 @@ public class KeyHole : MonoBehaviour, IInteractable
         HideInteraction();
         Mother.Instance.OnPlayerUseKey();
         _keyGraph.SetActive(true);
+        _keyGraph.transform.DOPunchScale(Vector3.one * 1.2f, 1.0f, vibrato: 4);
         _isDisabled = true;
     }
 

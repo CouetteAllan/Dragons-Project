@@ -13,6 +13,7 @@ public class EnemyManager : Singleton<EnemyManager>
     [SerializeField] private int _maxEnemyOnField = 12;
     [SerializeField] private int _minimumEnemiesOnField = 5;
 
+    private bool _isKilling = false;
 
     protected override void Awake()
     {
@@ -34,6 +35,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private void Initialize()
     {
+        _isKilling = false;
         _waveManager.Init();
     }
 
@@ -54,6 +56,8 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void RemoveEnemy(EnemyController enemy)
     {
+        if (_isKilling)
+            return;
         _enemies.Remove(enemy);
         if (_enemies.Count <= _minimumEnemiesOnField)
         {
@@ -74,6 +78,21 @@ public class EnemyManager : Singleton<EnemyManager>
         foreach (var enemy in _enemies)
         {
             enemy.ChangeEnemyState(EnemyState.WalkInRange);
+        }
+    }
+
+    public void KillAllRemainingEnemies()
+    {
+        _isKilling = true;
+        StartCoroutine(KillCoroutine());
+    }
+
+    private IEnumerator KillCoroutine()
+    {
+        foreach (var enemy in _enemies)
+        {
+            enemy.ChangeEnemyState(EnemyState.IsDead);
+            yield return new WaitForSeconds(.4f);
         }
     }
 }
