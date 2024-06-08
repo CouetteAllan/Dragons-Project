@@ -1346,10 +1346,10 @@ PrefabInstance:
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _enemyDatas
       value: 
-      objectReference: {fileID: 11400000, guid: e39cf732f1bbc28429661cee350aad24, type: 2}
+      objectReference: {fileID: 11400000, guid: 1a2dcb5a3f8dec445be7514ae5f4851b, type: 2}
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _spawnOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1742,6 +1742,17 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &341254808 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5805979954583433632, guid: 71f83e5e6b1c06645a56ff8b65f2be9c, type: 3}
+  m_PrefabInstance: {fileID: 1977460492}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5f630bd39e3cb40ac937a5525d4cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &354016252
 GameObject:
   m_ObjectHideFlags: 0
@@ -5081,7 +5092,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2007554370102611314, guid: 16add6d1263ad614282d95b05d057776, type: 3}
       propertyPath: m_Name
-      value: Cage Dark (1)
+      value: Cage Ice
       objectReference: {fileID: 0}
     - target: {fileID: 2633177976481069614, guid: 16add6d1263ad614282d95b05d057776, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5138,11 +5149,11 @@ PrefabInstance:
     - target: {fileID: 7425311172784489701, guid: 16add6d1263ad614282d95b05d057776, type: 3}
       propertyPath: _companion
       value: 
-      objectReference: {fileID: 11400000, guid: 85a1b3306d4c26f42980580b11b15ecb, type: 2}
+      objectReference: {fileID: 11400000, guid: 7cf23846a3dcfd949971a51008c491de, type: 2}
     - target: {fileID: 7425311172784489701, guid: 16add6d1263ad614282d95b05d057776, type: 3}
       propertyPath: _companionController
       value: 
-      objectReference: {fileID: 29188004}
+      objectReference: {fileID: 341254808}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5212,10 +5223,10 @@ PrefabInstance:
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _enemyDatas
       value: 
-      objectReference: {fileID: 11400000, guid: e39cf732f1bbc28429661cee350aad24, type: 2}
+      objectReference: {fileID: 11400000, guid: 1a2dcb5a3f8dec445be7514ae5f4851b, type: 2}
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _spawnOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8897,10 +8908,10 @@ PrefabInstance:
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _enemyDatas
       value: 
-      objectReference: {fileID: 11400000, guid: e39cf732f1bbc28429661cee350aad24, type: 2}
+      objectReference: {fileID: 11400000, guid: 1a2dcb5a3f8dec445be7514ae5f4851b, type: 2}
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _spawnOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11233,7 +11244,7 @@ MonoBehaviour:
           ButtonText: 
         Owner: {fileID: 1852123430}
         DebugActive: 0
-        PauseDuration: 0
+        PauseDuration: 0.1
         RandomizePauseDuration: 0
         MinPauseDuration: 1
         MaxPauseDuration: 3
@@ -11528,6 +11539,7 @@ GameObject:
   - component: {fileID: 1882088589}
   - component: {fileID: 1882088590}
   - component: {fileID: 1882088591}
+  - component: {fileID: 1882088592}
   m_Layer: 0
   m_Name: EndSequence
   m_TagString: Untagged
@@ -11573,7 +11585,7 @@ PlayableDirector:
   - key: {fileID: 7115856018312564420, guid: d884c975f92756a4892b38ac65dad92a, type: 2}
     value: {fileID: 420747725}
   - key: {fileID: 801188463708072317, guid: d884c975f92756a4892b38ac65dad92a, type: 2}
-    value: {fileID: 693639824}
+    value: {fileID: 1882088592}
   - key: {fileID: 1644718910324616836, guid: d884c975f92756a4892b38ac65dad92a, type: 2}
     value: {fileID: 1054080574}
   m_ExposedReferences:
@@ -11594,6 +11606,36 @@ MonoBehaviour:
   _virtualCamera: {fileID: 1242679845}
   _mom: {fileID: 354016252}
   _sequence: {fileID: 1882088590}
+--- !u!114 &1882088592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882088588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 7e521e19c2d498d4b874f664a88ab16e, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1882088591}
+          m_TargetAssemblyTypeName: EndSequenceScript, DragonsAssembly
+          m_MethodName: SendEndSequence
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1926303927
 GameObject:
   m_ObjectHideFlags: 0
@@ -12224,6 +12266,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 417068958467272501, guid: 71f83e5e6b1c06645a56ff8b65f2be9c, type: 3}
+      propertyPath: m_text
+      value: Not implemented yet
+      objectReference: {fileID: 0}
     - target: {fileID: 5473703375692189122, guid: 71f83e5e6b1c06645a56ff8b65f2be9c, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -12548,10 +12594,10 @@ PrefabInstance:
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _enemyDatas
       value: 
-      objectReference: {fileID: 11400000, guid: e39cf732f1bbc28429661cee350aad24, type: 2}
+      objectReference: {fileID: 11400000, guid: 1a2dcb5a3f8dec445be7514ae5f4851b, type: 2}
     - target: {fileID: 7973742078146493949, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: _spawnOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8174837138125868666, guid: cb4a02186d7c0bc4b9391412fba86e08, type: 3}
       propertyPath: m_LocalPosition.x

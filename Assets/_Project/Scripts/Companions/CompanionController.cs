@@ -61,10 +61,12 @@ public class CompanionController : MonoBehaviour, ICompanion
 
     private void Update()
     {
+#if UNITY_EDITOR
         if (Keyboard.current.pKey.wasPressedThisFrame && _currentState == CompanionState.Caged)
         {
             Deliver(GameManager.Instance.Player);
         }
+#endif
 
         if (_player == null || _currentState == CompanionState.Caged)
             return;

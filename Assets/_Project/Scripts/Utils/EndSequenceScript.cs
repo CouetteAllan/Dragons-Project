@@ -14,4 +14,9 @@ public class EndSequenceScript : Singleton<EndSequenceScript>
         _virtualCamera.SetActive(true);
         _sequence.Play();
     }
+
+    public void SendEndSequence()
+    {
+        GameManager.Instance.FadeOut();
+    }
 }
