@@ -18,7 +18,8 @@ public class FadeScreen : MonoBehaviour
     private IEnumerator FadeCoroutine()
     {
         float startFade = 0;
-        while(startFade <= 1.0f)
+        _fadeMat.SetFloat("_FadeTime", startFade);
+        while (startFade <= 1.0f)
         {
             _fadeMat.SetFloat("_FadeTime", startFade);
             startFade += Time.deltaTime * .5f;
@@ -31,6 +32,7 @@ public class FadeScreen : MonoBehaviour
     private IEnumerator FadeInCoroutine()
     {
         float startFade = 1.0f;
+        _fadeMat.SetFloat("_FadeTime", startFade);
         while (startFade >= 0.0f)
         {
             Debug.Log("we fadin'");

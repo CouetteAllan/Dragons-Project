@@ -87,7 +87,7 @@ public class PlayerInputs : MonoBehaviour
     private void FixedUpdate()
     {
         if (!_isFiring || _isDisable) return;
-        Vector2 launchDirection = UtilsClass.GetDirToMouse(this.transform.position);
+        Vector2 launchDirection = Rayqdr.Utils.UtilsClass.GetDirToMouse(this.transform.position);
         OnFireAction?.Invoke(launchDirection);
     }
 

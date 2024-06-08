@@ -18,7 +18,7 @@ MonoBehaviour:
   BaseSpeed: 7
   Range: 12
   AttackRadius: 2
-  AttackLenght: 4
+  AttackLenght: 3.64
   DashAttackStrenght: 5
   EnemyPrefab: {fileID: 5484748035976209341, guid: 7456cede16adc0243b602f3397e49839, type: 3}
   BossPatterns:

@@ -22,11 +22,13 @@ public class PlayerFireProjectile : MonoBehaviour
     private float _currentBonusDuration = 0.0f;
     private Coroutine _currentCoroutine = null;
     private PlayerSounds _sound;
+    private PlayerAnims _anims;
 
     private void Awake()
     {
         _inputs = GetComponent<PlayerInputs>();
         _inputs.OnFireAction += OnFireAction;
+        _anims = GetComponent<PlayerAnims>();
 
         _objectPool = new ObjectPool<Projectile>(OnCreateProjectile, OnGetProjectile, OnReleaseProjectile, OnDestroyProjectile, true);
         _cooldown = _fireBallCooldown;
@@ -99,6 +101,7 @@ public class PlayerFireProjectile : MonoBehaviour
 
     private IEnumerator FireBallCDCoroutine()
     {
+        _anims.PickUpChili(true);
         while(_currentBonusDuration > 0.0f)
         {
             _currentBonusDuration -= Time.deltaTime;
@@ -107,6 +110,8 @@ public class PlayerFireProjectile : MonoBehaviour
 
         _fireBallCooldown = _baseFireBallCooldown;
         _currentCoroutine = null;
+        _anims.PickUpChili(false);
+
     }
 
 

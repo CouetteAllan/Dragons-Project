@@ -19,7 +19,16 @@ public class PickUpObject : MonoBehaviour
 
     public void Breath()
     {
-        this.gameObject.transform?.DOBlendableScaleBy(Vector2.one * .4f, 1.0f).SetEase(Ease.OutBack).SetDelay(.5f).SetLoops(-1, LoopType.Yoyo).SetId(this.gameObject).SetAutoKill(true);
+        DOTween.To(() => (Vector3)transform.localScale, (v) =>
+        {
+            if (transform == null)
+                return;
+            transform.localScale = v;
+        }, Vector3.one * 1.2f, 1.0f)
+            .SetDelay(.5f)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.OutBack);
+        //this.gameObject.transform?.DOBlendableScaleBy().SetEase(Ease.OutBack).SetDelay(.5f).SetLoops(-1, LoopType.Yoyo).SetId(this.gameObject).SetAutoKill(true);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

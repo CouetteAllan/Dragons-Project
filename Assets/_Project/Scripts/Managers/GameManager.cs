@@ -41,7 +41,7 @@ public class GameManager : Singleton<GameManager>
 
     private void SceneManager_activeSceneChanged(Scene previousScene, Scene newActiveScene)
     {
-        if(newActiveScene == SceneManager.GetSceneByBuildIndex(1))
+        if(newActiveScene == SceneManager.GetSceneByBuildIndex(1) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
             ChangeGameState(GameState.StartGame);
         }
@@ -114,6 +114,11 @@ public class GameManager : Singleton<GameManager>
                 Time.fixedDeltaTime = Time.timeScale * 0.01f;
                 _isInPause = true;
                 break;
+            case GameState.MainMenu:
+                Time.timeScale = 1.0f;
+                Time.fixedDeltaTime = Time.timeScale * 0.01f;
+                _isInPause = false;
+                break;
         }
 
         OnGameStateChanged?.Invoke(CurrentState);
@@ -126,7 +131,7 @@ public class GameManager : Singleton<GameManager>
 
     public IEnumerator StartGame()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(5.0f);
         ChangeGameState(GameState.InGame);
     }
 

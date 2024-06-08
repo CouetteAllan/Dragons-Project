@@ -14,8 +14,9 @@ public class PlayerAnims : MonoBehaviour
     [Space]
     [SerializeField] private SpriteRenderer _headRenderer;
     [SerializeField] private Sprite[] _heads = new Sprite[2];
-    [SerializeField] private MMF_Player _hitFeedback, _dashFeedback, _eatFeedback;
+    [SerializeField] private MMF_Player _hitFeedback, _dashFeedback, _eatFeedback,_eatChiliFeedback;
     [SerializeField] private TrailRenderer _trail;
+    [SerializeField] private ParticleSystem _chiliParticles;
     private float _timerBeforeReswap = 0.0f;
     private Coroutine _currentCoroutine = null;
     private PlayerInputs _inputs;
@@ -106,6 +107,23 @@ public class PlayerAnims : MonoBehaviour
         FXManager.Instance.CreateFX(pickUp.EffectName, this.transform.position,this.transform);
         if(pickUp.EffectName == "heal")
             _eatFeedback.PlayFeedbacks();
+    }
+
+    public void PickUpChili(bool play)
+    {
+        if (play)
+        {
+            _eatChiliFeedback.PlayFeedbacks();
+            _chiliParticles.Play();
+        }
+        else
+        {
+            _eatChiliFeedback.StopFeedbacks();
+            _eatChiliFeedback.RestoreInitialValues();
+            _eatChiliFeedback.ResetFeedbacks();
+            _chiliParticles.Stop();
+
+        }
     }
 
 

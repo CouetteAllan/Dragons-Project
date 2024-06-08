@@ -76,6 +76,7 @@ namespace MoreMountains.Tools
 				//another reference in scene, destroy it!
 				if(this != _instance)
 				{
+					Debug.Log("The instance " + this.gameObject.name + " is different from " + _instance.GetType().Name);
 					Destroy(this.gameObject);
 				}
 			}

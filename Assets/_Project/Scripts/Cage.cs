@@ -14,6 +14,7 @@ public class Cage : MonoBehaviour, IInteractable
     [SerializeField] private CanvasGroup _canvasRenderer;
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private MMF_Player _deliverFeedback;
+    [SerializeField] private Collider2D _collider;
 
     private bool _isDisabled = false;
     private void Awake()
@@ -56,5 +57,7 @@ public class Cage : MonoBehaviour, IInteractable
         HideInteraction();
         player.RemoveKey();
         _isDisabled = true;
+        _collider.enabled = false;
+        FunctionTimer.Create(() => Destroy(this.gameObject),3.0f);
     }
 }

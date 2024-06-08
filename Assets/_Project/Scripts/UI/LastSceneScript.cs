@@ -2,15 +2,19 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LastSceneScript : MonoBehaviour
 {
     public CanvasGroup TextFade;
     public Transform _devText, _graphText;
+    public Button QuitButton;
 
     private void Awake()
     {
         this.GetComponent<FadeScreen>().FadeIn();
+        QuitButton.onClick.AddListener(() => SceneManager.LoadScene(0));
     }
 
     private void Start()
