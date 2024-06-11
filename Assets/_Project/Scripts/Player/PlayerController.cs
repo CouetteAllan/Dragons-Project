@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     private PlayerFireProjectile _fireScript;
 
     private float _currentHealth;
+    private float _shieldAmount = 0;
+    private float _maxShieldAmount = 20.0f;
+
     private bool _canMove = true;
 
     private bool _isInvincible = false;
@@ -37,12 +40,16 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
     private int _keyNumber = 0;
 
     private bool _dashUnlocked = false;
+    private bool _shieldUnlocked = false;
 
     private IInteractable _currentInteractable;
     private List<CompanionController> _companions = new List<CompanionController>();
 
     private DarkStrategy _dashData;
     public DarkStrategy DashData => _dashData;
+
+    private IceStrategy _iceData;
+    public IceStrategy IceData => _iceData;
 
     private void Awake()
     {
@@ -56,6 +63,14 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
 
         _inputs.OnInteractAction += OnInteractAction;
         _inputs.OnDash += OnDash;
+        _inputs.OnShield += OnShield;
+    }
+
+    private void OnShield()
+    {
+        if (_shieldAmount > 0)
+            return;
+        _shieldAmount = _maxShieldAmount;
     }
 
     private void OnDash()
@@ -208,6 +223,14 @@ public class PlayerController : MonoBehaviour, IHealth, IHittable, IHitSource
             return;
         _inputs.UnlockDash();
         _dashData = dark;
+    }
+
+    public void UnlockShield(IceStrategy ice)
+    {
+        if (_shieldUnlocked)
+            return;
+        _inputs.UnlockShield();
+        _iceData = ice;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

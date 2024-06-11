@@ -10,6 +10,7 @@ public class PlayerInputs : MonoBehaviour
     public event Action<Vector2> OnFireAction;
     public event Action OnInteractAction;
     public event Action OnDash;
+    public event Action OnShield;
     public Vector2 Dir { get; private set; }
     public Vector2 LastValidDir {
         get
@@ -45,6 +46,11 @@ public class PlayerInputs : MonoBehaviour
 
     }
 
+    private void Shield_performed(InputAction.CallbackContext obj)
+    {
+        OnShield?.Invoke();
+    }
+
     private void Fire_canceled(InputAction.CallbackContext obj)
     {
         _isFiring = false;
@@ -69,6 +75,7 @@ public class PlayerInputs : MonoBehaviour
         _inputActions.Player.Interact.performed -= Interact_performed;
         _inputActions.Player.PauseButton.performed -= PauseButton_performed;
         _inputActions.Player.Dash.performed -= Dash_performed;
+        _inputActions.Player.Shield.performed -= Shield_performed;
         _inputActions.Disable();
 
         _playerInput.onControlsChanged -= onControlsChanged;
@@ -115,6 +122,11 @@ public class PlayerInputs : MonoBehaviour
     public void UnlockDash()
     {
         _inputActions.Player.Dash.performed += Dash_performed;
+    }
+
+    public void UnlockShield()
+    {
+        _inputActions.Player.Shield.performed += Shield_performed;
     }
 
     private void Dash_performed(InputAction.CallbackContext obj)
